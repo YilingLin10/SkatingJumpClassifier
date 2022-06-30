@@ -1,0 +1,9 @@
+data/test
+data/test_balance
+data/train
+data_balance
+
+__pycache__/
+*.py[cod]
+
+**/.DS_Store
