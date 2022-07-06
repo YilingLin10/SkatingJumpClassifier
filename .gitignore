@@ -1,7 +1,7 @@
-data/test
 data/test_balance
 data/train
 data_balance
+experiments
 
 __pycache__/
 *.py[cod]
