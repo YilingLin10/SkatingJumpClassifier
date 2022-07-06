@@ -80,20 +80,17 @@ class IceSkatingDataset(Dataset):
         to_len = max(len(sample['output']) for sample in samples)
         # pad samples['keypoints'] to to_len
         keypoints = np.zeros((len(samples), to_len, 51))
-        # pad samples['output'] to to_len and create padding_mask
+        # pad samples['output'] to to_len
         output = (-1) * np.ones((len(samples), to_len))
-        padding_mask = np.zeros((len(samples), to_len))
 
         for i in range(len(samples)):
             output_len = len(samples[i]['output'])
             output[i][:output_len] = samples[i]['output']
             keypoints[i][:output_len] = samples[i]['keypoints']
-            padding_mask[i][:output_len] = [1] * output_len
 
         padded_output = torch.LongTensor(output)
         padded_keypoints = torch.FloatTensor(keypoints)
-        padding_mask = torch.FloatTensor(padding_mask)
-        return {'keypoints': padded_keypoints, 'padding_mask': padding_mask, 'output': padded_output}
+        return {'keypoints': padded_keypoints, 'output': padded_output}
 
 
 
@@ -108,5 +105,4 @@ if __name__ == '__main__':
         print(i_batch)
         # print(sample_batched['output'])
         # print(sample_batched['keypoints'].size())
-        # print(sample_batched['padding_mask'].size())
         break
