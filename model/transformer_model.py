@@ -44,6 +44,7 @@ class TransformerModel(nn.Module):
                  activation = 'relu',
                  layer_norm_eps = CONFIG.LAYER_NORM_EPS,
                  batch_first = True,
+                 num_class = CONFIG.NUM_CLASS,
                  norm_first = False,
                  device=None, dtype=None):
         super(TransformerModel, self).__init__()
@@ -54,7 +55,7 @@ class TransformerModel(nn.Module):
         self.batch_first = batch_first
         self.pos_encoder = PositionalEncoding(d_model=self.d_model,
                                               dropout=dropout, 
-                                              max_len=5000)
+                                              max_len=300)
         encoder_layer = nn.TransformerEncoderLayer(d_model=d_model,
                                                    nhead =nhead, 
                                                    dim_feedforward = dim_feedforward, 
@@ -67,7 +68,8 @@ class TransformerModel(nn.Module):
                                     eps=layer_norm_eps, 
                                     **factory_kwargs)
         self.encoder = nn.TransformerEncoder(encoder_layer, num_encoder_layers, encoder_norm)
-        self.out = nn.Linear(d_model, 2)
+        self.num_class = num_class
+        self.out = nn.Linear(d_model, self.num_class)
 
     def generate_src_mask(self, size):
         ### (S, S)
