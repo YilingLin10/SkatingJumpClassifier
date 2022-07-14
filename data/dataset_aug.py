@@ -51,7 +51,7 @@ class IceSkatingAugDataset(Dataset):
         for i in range(start_frame, start_jump):
             tags.append(self.tag2idx('O'))
             frameNumber_list.append(i)
-        tags.append(self.tag2idx('S'))
+        tags.append(self.tag2idx('B'))
         frameNumber_list.append(start_jump)
         for i in range(len(middle_frames)):
             tags.append(self.tag2idx('I'))

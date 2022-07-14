@@ -131,10 +131,10 @@ def main(args):
             ############### EVALUATION ##############
             if steps % CONFIG.EVAL_STEPS == 0:
                 model.eval()
-                print("STEP-{} EVALUATING TRAINING DATA ...".format(steps))
+                print("========= STEP-{} EVALUATING TRAINING DATA =========".format(steps))
                 eval_results_train = eval_seq(model, trainloader)
-
-                print("STEP-{} EVALUATING TESTING DATA ...".format(steps))
+                
+                print("========= STEP-{} EVALUATING TESTING DATA =========".format(steps))
                 eval_results_test = eval_seq(model, testloader)
                 writer.add_scalar('TRAIN/ACCURACY', eval_results_train['accuracy'], steps)
                 writer.add_scalar('EVAL/ACCURACY', eval_results_test['accuracy'], steps)

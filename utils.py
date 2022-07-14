@@ -88,13 +88,14 @@ def eval_seq(model, dataset):
                 batch_prediction.append(single_prediction)
             
             val_preds.extend(batch_prediction)
-            # print("==============")
-            # print("PREDICTION")
-            # print(batch_prediction)
             token_acc, join_acc = accuracy(val_labels, val_preds)
             token_acc_list.append(token_acc)
             join_acc_list.append(join_acc)
+    print("************")
+    print("PREDICTION")
+    print(batch_prediction[0])
+    print("************")
     print("TOKEN ACCURACY: {:.1%}".format(float(np.array(token_acc_list).mean())))
     print("JOIN ACCURACY: {:.1%}".format(float(np.array(join_acc_list).mean())))
-    print("=============END OF EVALUATION=============")
+    print("================= END OF EVALUATION ================")
     return {"accuracy": float(np.array(token_acc_list).mean())}

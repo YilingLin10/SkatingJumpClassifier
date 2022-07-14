@@ -53,13 +53,13 @@ class IceSkatingDataset(Dataset):
             end_jump_2 = int(video_data['end_jump_2'])
             for i in range(start_frame, start_jump_1):
                 tags.append(self.tag2idx('O'))
-            tags.append(self.tag2idx('S'))
+            tags.append(self.tag2idx('B'))
             for i in range(start_jump_1 + 1, end_jump_1):
                 tags.append(self.tag2idx('I'))
             tags.append(self.tag2idx('E'))
             for i in range(end_jump_1+1, start_jump_2):
                 tags.append(self.tag2idx('O'))
-            tags.append(self.tag2idx('S'))
+            tags.append(self.tag2idx('B'))
             for i in range(start_jump_2 + 1, end_jump_2):
                 tags.append(self.tag2idx('I'))
             tags.append(self.tag2idx('E'))
@@ -70,7 +70,7 @@ class IceSkatingDataset(Dataset):
             ###### the video only includes 1 jump
             for i in range(start_frame, start_jump_1):
                 tags.append(self.tag2idx('O'))
-            tags.append(self.tag2idx('S'))
+            tags.append(self.tag2idx('B'))
             for i in range(start_jump_1 + 1, end_jump_1):
                 tags.append(self.tag2idx('I'))
             tags.append(self.tag2idx('E'))
