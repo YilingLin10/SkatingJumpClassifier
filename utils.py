@@ -24,17 +24,6 @@ def eval(model, dataset):
 
     return {"accuracy": float(np.array(acc_list).mean()),"tn": int(tn_total),"fp": int(fp_total) , "fn": int(fn_total), "tp": int(tp_total)}
 
-def nll_loss(predict, y):
-    # convert y from (batch_size, max_len) to (batch_size * max_len)
-    y = y.view(-1)
-    if_padded = (y > -1).float()
-    total_token = int(torch.sum(if_padded).item())
-    # predict: (batch_size * max_len, num_class)
-    predict = predict[range(predict.size(0)), y]* if_padded
-    ce = -torch.sum(predict) / total_token
-    
-    return ce
-
 def accuracy(tags, preds):
     total_token = 0
     correct_token = 0
@@ -57,13 +46,12 @@ def eval_seq(model, dataset):
     token_acc_list =[]
     join_acc_list = []
     val_preds, val_labels = [], []
-    model.eval()
     for it, batch in enumerate(dataset):
         with torch.no_grad():
             batch_size = batch['keypoints'].size(0)
             keypoints, labels_list = batch['keypoints'].to(device), batch['output'].to(device)
-            output = model(keypoints)
-            loss = nll_loss(output, labels_list)
+            mask = batch['mask']
+            output = model(keypoints, mask)
             
             batch_labels = []
             for labels in labels_list:
@@ -88,14 +76,39 @@ def eval_seq(model, dataset):
                 batch_prediction.append(single_prediction)
             
             val_preds.extend(batch_prediction)
-            token_acc, join_acc = accuracy(val_labels, val_preds)
-            token_acc_list.append(token_acc)
-            join_acc_list.append(join_acc)
+    token_acc, join_acc = accuracy(val_labels, val_preds)
     print("************")
     print("PREDICTION")
     print(batch_prediction[0])
     print("************")
-    print("TOKEN ACCURACY: {:.1%}".format(float(np.array(token_acc_list).mean())))
-    print("JOIN ACCURACY: {:.1%}".format(float(np.array(join_acc_list).mean())))
+    print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    print("JOIN ACCURACY: {:.1%}".format(join_acc))
     print("================= END OF EVALUATION ================")
-    return {"accuracy": float(np.array(token_acc_list).mean())}
+    return {"accuracy": token_acc}
+
+def eval_crf(model, dataset):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    preds_list, labels_list = [], []
+    for it, batch in enumerate(dataset):
+        with torch.no_grad():
+            batch_size = batch['keypoints'].size(0)
+            keypoints, batch_labels = batch['keypoints'].to(device), batch['output'].to(device)
+            mask = batch['mask'].to(device)
+            #### output: list of predictions
+            batch_preds = model(keypoints, mask)
+            
+            for preds in batch_preds:
+                preds_list += preds
+            for labels, m in zip(batch_labels, mask):
+                labels_list += labels[m==True].tolist()
+    
+    preds_list_tensor = torch.tensor(preds_list)
+    labels_list_tensor = torch.tensor(labels_list)
+    token_acc = (preds_list_tensor == labels_list_tensor).sum()/len(preds_list_tensor)
+    print("************")
+    print(batch_labels[0])
+    print(batch_preds[0])
+    print("************")
+    print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    print("================= END OF EVALUATION ================")
+    return {"accuracy": token_acc.detach().item()}

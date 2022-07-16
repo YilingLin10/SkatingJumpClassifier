@@ -12,7 +12,7 @@ from helper import *
 ######### Dataset for whole videos ######
 class IceSkatingDataset(Dataset):
 
-    def __init__(self, csv_file, root_dir, tag_mapping_file, transform=None):
+    def __init__(self, csv_file, root_dir, tag_mapping_file, use_crf, transform=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -23,6 +23,7 @@ class IceSkatingDataset(Dataset):
         self.jump_frame = pd.read_csv(csv_file)
         self.root_dir = root_dir
         self.transform = transform
+        self.use_crf = use_crf
         self.videos = list(Path(self.root_dir).glob("*/"))
         self.tag_mapping = json.loads(Path(tag_mapping_file).read_text())
         self._idx2tag = {idx: tag for tag, idx in self.tag_mapping.items()}
@@ -99,20 +100,27 @@ class IceSkatingDataset(Dataset):
         return sample
     
     def collate_fn(self, samples):
-        to_len = max(len(sample['output']) for sample in samples)
+        if self.use_crf:
+            samples.sort(key=lambda x: len(x['output']), reverse=True)
+            to_len = len(samples[0]['output'])
+        else:
+            to_len = max(len(sample['output']) for sample in samples)
         # pad samples['keypoints'] to to_len
         keypoints = np.zeros((len(samples), to_len, 51))
         # pad samples['output'] to to_len
         output = (-1) * np.ones((len(samples), to_len))
+        mask = np.zeros((len(samples), to_len))
 
         for i in range(len(samples)):
             output_len = len(samples[i]['output'])
             output[i][:output_len] = samples[i]['output']
             keypoints[i][:output_len] = samples[i]['keypoints']
+            mask[i][:output_len] = np.ones(output_len)
 
         padded_output = torch.LongTensor(output)
         padded_keypoints = torch.FloatTensor(keypoints)
-        return {'keypoints': padded_keypoints, 'output': padded_output}
+        mask = torch.tensor(mask).bool()
+        return {'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
 
     def tag2idx(self, tag: str):
         return self.tag_mapping[tag]
@@ -124,7 +132,8 @@ class IceSkatingDataset(Dataset):
 if __name__ == '__main__':
     dataset = IceSkatingDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv',
                                     root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test/',
-                                    tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json')
+                                    tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
+                                    use_crf=True)
 
     dataloader = DataLoader(dataset,batch_size=2,
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
