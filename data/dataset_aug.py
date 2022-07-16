@@ -11,7 +11,7 @@ from helper import *
 
 class IceSkatingAugDataset(Dataset):
 
-    def __init__(self, json_file, root_dir, tag_mapping_file, use_crf, transform=None):
+    def __init__(self, json_file, root_dir, tag_mapping_file, use_crf, add_noise, transform=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -26,6 +26,7 @@ class IceSkatingAugDataset(Dataset):
         self.root_dir = root_dir
         self.transform = transform
         self.use_crf = use_crf
+        self.add_noise = add_noise
         self.videos = list(Path(self.root_dir).glob("*/"))
         self.tag_mapping = json.loads(Path(tag_mapping_file).read_text())
         self._idx2tag = {idx: tag for tag, idx in self.tag_mapping.items()}
@@ -105,6 +106,9 @@ class IceSkatingAugDataset(Dataset):
 
         padded_output = torch.LongTensor(output)
         padded_keypoints = torch.FloatTensor(keypoints)
+        ### Add noise to keypoints
+        if self.add_noise:
+            padded_keypoints = padded_keypoints + torch.randn(padded_keypoints.size(0), padded_keypoints.size(1), padded_keypoints.size(2))
         mask = torch.tensor(mask).bool()
         return {'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
 
@@ -120,14 +124,15 @@ if __name__ == '__main__':
     dataset = IceSkatingAugDataset(json_file='/home/lin10/projects/SkatingJumpClassifier/data/skating_data.jsonl',
                                     root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train/',
                                     tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
-                                    use_crf=True)
+                                    use_crf=True,
+                                    add_noise=True)
 
     dataloader = DataLoader(dataset,batch_size=2,
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
 
     for i_batch, sample_batched in enumerate(dataloader):
         # print(i_batch)
-        print(sample_batched['output'])
-        print(sample_batched['mask'])
+        # print(sample_batched['output'])
+        # print(sample_batched['mask'])
         # print(sample_batched['keypoints'].size())
         break

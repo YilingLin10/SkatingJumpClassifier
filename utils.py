@@ -93,7 +93,7 @@ def eval_crf(model, dataset):
     labels_list_tensor = torch.tensor(labels_list)
     token_acc = (preds_list_tensor == labels_list_tensor).sum()/len(preds_list_tensor)
     print("************")
-    print(batch_labels[0])
+    print(batch_labels[0].tolist())
     print(batch_preds[0])
     print("************")
     print("TOKEN ACCURACY: {:.1%}".format(token_acc))

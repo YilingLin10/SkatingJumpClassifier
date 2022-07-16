@@ -39,25 +39,7 @@ def nll_loss(predict, y):
     # predict: (batch_size * max_len, num_class)
     predict = predict[range(predict.size(0)), y]* if_padded
     ce = -torch.sum(predict) / total_token
-    
     return ce
-
-def accuracy(tags, preds):
-    total_token = 0
-    correct_token = 0
-    correct_sequence = 0
-    for tag, pred in zip(tags, preds):
-        total_token += len(pred)
-        if tag == pred:
-            correct_sequence += 1
-        for t, p in zip(tag, pred):
-            if t == p:
-                correct_token += 1
-    token_acc = correct_token / total_token
-    join_acc = correct_sequence / len(tags)            
-    print("Token Accuracy: {:.1%}".format(token_acc))
-    print("Join Accuracy: {:.1%}".format(join_acc))
-    return token_acc, join_acc
 
 def same_seed(seed): 
     torch.backends.cudnn.deterministic = True
@@ -72,11 +54,16 @@ def main(args):
     same_seed(args.seed)
 
     ########### LOAD DATA ############
-    # tag2idx: Dict[str, int] = json.loads(CONFIG.TAG2IDX_FILE.read_text())
     train_dataset = IceSkatingAugDataset(json_file=CONFIG.JSON_FILE,
-                                        root_dir=CONFIG.TRAIN_DIR, tag_mapping_file=CONFIG.TAG2IDX_FILE, use_crf=CONFIG.USE_CRF)
+                                        root_dir=CONFIG.TRAIN_DIR, 
+                                        tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                        use_crf=CONFIG.USE_CRF, 
+                                        add_noise=CONFIG.ADD_NOISE)
     test_dataset = IceSkatingDataset(csv_file=CONFIG.CSV_FILE,
-                                        root_dir=CONFIG.TEST_DIR, tag_mapping_file=CONFIG.TAG2IDX_FILE, use_crf=CONFIG.USE_CRF)
+                                    root_dir=CONFIG.TEST_DIR,
+                                    tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                    use_crf=CONFIG.USE_CRF,
+                                    add_noise=CONFIG.ADD_NOISE)
     trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
     testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
