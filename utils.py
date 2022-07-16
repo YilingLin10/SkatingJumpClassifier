@@ -45,41 +45,29 @@ def eval_seq(model, dataset):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     token_acc_list =[]
     join_acc_list = []
-    val_preds, val_labels = [], []
+    preds_list, labels_list = [], []
     for it, batch in enumerate(dataset):
         with torch.no_grad():
             batch_size = batch['keypoints'].size(0)
-            keypoints, labels_list = batch['keypoints'].to(device), batch['output'].to(device)
-            mask = batch['mask']
+            keypoints, batch_labels = batch['keypoints'].to(device), batch['output'].to(device)
+            mask = batch['mask'].to(device)
             output = model(keypoints, mask)
             
-            batch_labels = []
-            for labels in labels_list:
-                single_labels = []
-                for label in labels:
-                    if label.item() < 0:
-                        break
-                    single_labels.append(label.item())
-                batch_labels.append(single_labels)
-            val_labels.extend(batch_labels)
+            for labels, m in zip(batch_labels, mask):
+                labels_list.append(labels[m==True].tolist())
             
-            pred = torch.exp(output)
-            pred = torch.max(output,dim=1)[1]
-            pred = pred.view(batch_size, -1)
-            batch_prediction = []
-            for frames, labels in zip(keypoints, pred):
-                single_prediction = []
-                for i, frame in enumerate(frames):
-                    if torch.any(frame):
-                        single_prediction.append(labels[i].item())
-            
-                batch_prediction.append(single_prediction)
-            
-            val_preds.extend(batch_prediction)
-    token_acc, join_acc = accuracy(val_labels, val_preds)
+            batch_preds = torch.argmax(output,dim=1)
+            ## reshape: (batch * seq_len) ---> (batch, seq_len)
+            batch_preds = batch_preds.view(batch_size, -1)
+
+            for preds, m in zip(batch_preds, mask):
+                preds_list.append(preds[m==True].tolist())
+
+    token_acc, join_acc = accuracy(labels_list, preds_list)
     print("************")
     print("PREDICTION")
-    print(batch_prediction[0])
+    print(labels_list[0])
+    print(preds_list[0])
     print("************")
     print("TOKEN ACCURACY: {:.1%}".format(token_acc))
     print("JOIN ACCURACY: {:.1%}".format(join_acc))
@@ -91,7 +79,6 @@ def eval_crf(model, dataset):
     preds_list, labels_list = [], []
     for it, batch in enumerate(dataset):
         with torch.no_grad():
-            batch_size = batch['keypoints'].size(0)
             keypoints, batch_labels = batch['keypoints'].to(device), batch['output'].to(device)
             mask = batch['mask'].to(device)
             #### output: list of predictions
