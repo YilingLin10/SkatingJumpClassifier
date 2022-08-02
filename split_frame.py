@@ -16,6 +16,11 @@ def main(_argv):
 
     if not success:
         print("failed to read file: {}".format("20220801_Jump_重新命名/{}/{}.MOV".format(FLAGS.type, FLAGS.filename)))
+        cap = cv2.VideoCapture("20220801_Jump_重新命名/{}/{}.MP4".format(FLAGS.type, FLAGS.filename))
+        success,image = cap.read()
+        i = 0
+        if success:
+            print("read mp4 file instead")
 
     while(success):
         cv2.imwrite("20220801/{}/{}/".format(FLAGS.type, FLAGS.filename) + str(i) + '.jpg', image)
