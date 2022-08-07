@@ -13,14 +13,15 @@ from torch.utils.data import Dataset, DataLoader
 
 from model.crf_model import TransformerModel
 from model.linear_model import *
-from data.dataset_aug import *
-from data.dataset import *
+from data.dataset_aug import IceSkatingAugDataset, IceSkatingAugEmbDataset
+from data.dataset import IceSkatingDataset, IceSkatingEmbDataset
 from sklearn.metrics import accuracy_score, confusion_matrix
 from utils import eval_seq, eval_crf
 from config import CONFIG
 from tqdm import trange, tqdm
 from typing import Dict
 import json
+import os
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
@@ -54,21 +55,33 @@ def main(args):
     same_seed(args.seed)
 
     ########### LOAD DATA ############
-    train_dataset = IceSkatingAugDataset(json_file=CONFIG.JSON_FILE,
-                                        root_dir=CONFIG.TRAIN_DIR, 
+    if CONFIG.USE_EMBS:
+        train_dataset = IceSkatingAugEmbDataset(json_file=CONFIG.JSON_FILE,
+                                            root_dir=CONFIG.TRAIN_DIR, 
+                                            tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                            use_crf=CONFIG.USE_CRF, 
+                                            add_noise=CONFIG.ADD_NOISE)
+        test_dataset = IceSkatingEmbDataset(csv_file=CONFIG.CSV_FILE,
+                                        root_dir=CONFIG.TEST_DIR,
                                         tag_mapping_file=CONFIG.TAG2IDX_FILE, 
-                                        use_crf=CONFIG.USE_CRF, 
+                                        use_crf=CONFIG.USE_CRF,
                                         add_noise=CONFIG.ADD_NOISE)
-    test_dataset = IceSkatingDataset(csv_file=CONFIG.CSV_FILE,
-                                    root_dir=CONFIG.TEST_DIR,
-                                    tag_mapping_file=CONFIG.TAG2IDX_FILE, 
-                                    use_crf=CONFIG.USE_CRF,
-                                    add_noise=CONFIG.ADD_NOISE)
+    else:
+        train_dataset = IceSkatingAugDataset(json_file=CONFIG.JSON_FILE,
+                                            root_dir=CONFIG.TRAIN_DIR, 
+                                            tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                            use_crf=CONFIG.USE_CRF, 
+                                            add_noise=CONFIG.ADD_NOISE)
+        test_dataset = IceSkatingDataset(csv_file=CONFIG.CSV_FILE,
+                                        root_dir=CONFIG.TEST_DIR,
+                                        tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                        use_crf=CONFIG.USE_CRF,
+                                        add_noise=CONFIG.ADD_NOISE)
     trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
     testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
     model = TransformerModel(
-                    d_model = 51,
+                    d_model = CONFIG.D_MODEL,
                     nhead = CONFIG.NUM_HEADS, 
                     num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
                     dim_feedforward = CONFIG.DIM_FEEDFORWARD,
@@ -118,7 +131,6 @@ def main(args):
         
             ############### EVALUATION ##############
             if steps % CONFIG.EVAL_STEPS == 0:
-                model.eval()
                 print("========= STEP-{} EVALUATING TRAINING DATA =========".format(steps))
                 eval_results_train = eval_crf(model, trainloader) if CONFIG.USE_CRF else eval_seq(model, trainloader)
                 
@@ -142,8 +154,6 @@ def main(args):
                         'state_dict': model.state_dict(),
                     }
                     torch.save(checkpoint, save_path + "transformer_bin_class.pth")
-
-                model.train()
 
 if __name__ == "__main__":
     args = parse_args()

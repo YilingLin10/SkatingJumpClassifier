@@ -68,7 +68,7 @@ for video in videos:
 
 print(len(data))
 
-json_file = '/home/lin10/projects/SkatingJumpClassifier/data/skating_data.jsonl'
+json_file = '/home/lin10/projects/SkatingJumpClassifier/data/skating_data_4.jsonl'
 with open(os.path.join(json_file), "w") as f:
     for d in data:
         json.dump(d, f)

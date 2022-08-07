@@ -41,7 +41,7 @@ class PositionalEncoding(nn.Module):
 class TransformerModel(nn.Module):
 
     def __init__(self,
-                 d_model = 51,
+                 d_model = CONFIG.D_MODEL,
                  nhead = CONFIG.NUM_HEADS, 
                  num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
                  dim_feedforward = CONFIG.DIM_FEEDFORWARD,
@@ -133,7 +133,7 @@ if __name__ == '__main__':
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
 
     model = TransformerModel(
-                    d_model = 51,
+                    d_model = CONFIG.D_MODEL,
                     nhead = CONFIG.NUM_HEADS, 
                     num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
                     dim_feedforward = CONFIG.DIM_FEEDFORWARD,
