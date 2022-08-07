@@ -19,10 +19,10 @@ import random
 ##    "end_jump": 15
 ## }
 ########################################################################
-# csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv'
-# root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train/'
-csv_file='/home/lin10/projects/SkatingJumpClassifier/data/skatingloop_0801.csv'
-root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop'
+csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv'
+root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train/'
+# csv_file='/home/lin10/projects/SkatingJumpClassifier/data/skatingloop_0801.csv'
+# root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop'
 videos = list(Path(root_dir).glob("*/"))
 jump_frame = pd.read_csv(csv_file)
 data = []
@@ -112,7 +112,7 @@ for video in videos:
 
 print(len(data))
 # print(data[1175])
-json_file = '/home/lin10/projects/SkatingJumpClassifier/data/skating_data_4.jsonl'
+json_file = '/home/lin10/projects/SkatingJumpClassifier/data/train_data_aug2.jsonl'
 with open(os.path.join(json_file), "w") as f:
     for d in data:
         json.dump(d, f)

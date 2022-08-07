@@ -1,0 +1,536 @@
+{"id": "e09-0", "video_name": "e09", "start_frame": 55, "end_frame": 78, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-1", "video_name": "e09", "start_frame": 54, "end_frame": 77, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-2", "video_name": "e09", "start_frame": 53, "end_frame": 76, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-3", "video_name": "e09", "start_frame": 52, "end_frame": 75, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-4", "video_name": "e09", "start_frame": 51, "end_frame": 74, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-5", "video_name": "e09", "start_frame": 50, "end_frame": 73, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-6", "video_name": "e09", "start_frame": 49, "end_frame": 72, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-7", "video_name": "e09", "start_frame": 48, "end_frame": 71, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-8", "video_name": "e09", "start_frame": 47, "end_frame": 70, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-9", "video_name": "e09", "start_frame": 46, "end_frame": 69, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "e09-10", "video_name": "e09", "start_frame": 45, "end_frame": 68, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67], "start_jump": 55, "end_jump": 68}
+{"id": "a14-0", "video_name": "a14", "start_frame": 33, "end_frame": 64, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-1", "video_name": "a14", "start_frame": 32, "end_frame": 63, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-2", "video_name": "a14", "start_frame": 31, "end_frame": 62, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-3", "video_name": "a14", "start_frame": 30, "end_frame": 61, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-4", "video_name": "a14", "start_frame": 29, "end_frame": 60, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-5", "video_name": "a14", "start_frame": 28, "end_frame": 59, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-6", "video_name": "a14", "start_frame": 27, "end_frame": 58, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-7", "video_name": "a14", "start_frame": 26, "end_frame": 57, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-8", "video_name": "a14", "start_frame": 25, "end_frame": 56, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-9", "video_name": "a14", "start_frame": 24, "end_frame": 55, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-10", "video_name": "a14", "start_frame": 23, "end_frame": 54, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-11", "video_name": "a14", "start_frame": 22, "end_frame": 53, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-12", "video_name": "a14", "start_frame": 21, "end_frame": 52, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-13", "video_name": "a14", "start_frame": 20, "end_frame": 51, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a14-14", "video_name": "a14", "start_frame": 19, "end_frame": 50, "middle_frames": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49], "start_jump": 33, "end_jump": 50}
+{"id": "a10-0", "video_name": "a10", "start_frame": 58, "end_frame": 87, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-1", "video_name": "a10", "start_frame": 57, "end_frame": 86, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-2", "video_name": "a10", "start_frame": 56, "end_frame": 85, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-3", "video_name": "a10", "start_frame": 55, "end_frame": 84, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-4", "video_name": "a10", "start_frame": 54, "end_frame": 83, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-5", "video_name": "a10", "start_frame": 53, "end_frame": 82, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-6", "video_name": "a10", "start_frame": 52, "end_frame": 81, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-7", "video_name": "a10", "start_frame": 51, "end_frame": 80, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-8", "video_name": "a10", "start_frame": 50, "end_frame": 79, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-9", "video_name": "a10", "start_frame": 49, "end_frame": 78, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-10", "video_name": "a10", "start_frame": 48, "end_frame": 77, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-11", "video_name": "a10", "start_frame": 47, "end_frame": 76, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-12", "video_name": "a10", "start_frame": 46, "end_frame": 75, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "a10-13", "video_name": "a10", "start_frame": 45, "end_frame": 74, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "start_jump": 58, "end_jump": 74}
+{"id": "e07-0", "video_name": "e07", "start_frame": 40, "end_frame": 61, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-1", "video_name": "e07", "start_frame": 39, "end_frame": 60, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-2", "video_name": "e07", "start_frame": 38, "end_frame": 59, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-3", "video_name": "e07", "start_frame": 37, "end_frame": 58, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-4", "video_name": "e07", "start_frame": 36, "end_frame": 57, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-5", "video_name": "e07", "start_frame": 35, "end_frame": 56, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-6", "video_name": "e07", "start_frame": 34, "end_frame": 55, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-7", "video_name": "e07", "start_frame": 33, "end_frame": 54, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-8", "video_name": "e07", "start_frame": 32, "end_frame": 53, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "e07-9", "video_name": "e07", "start_frame": 31, "end_frame": 52, "middle_frames": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 40, "end_jump": 52}
+{"id": "a16-0", "video_name": "a16", "start_frame": 69, "end_frame": 96, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-1", "video_name": "a16", "start_frame": 68, "end_frame": 95, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-2", "video_name": "a16", "start_frame": 67, "end_frame": 94, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-3", "video_name": "a16", "start_frame": 66, "end_frame": 93, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-4", "video_name": "a16", "start_frame": 65, "end_frame": 92, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-5", "video_name": "a16", "start_frame": 64, "end_frame": 91, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-6", "video_name": "a16", "start_frame": 63, "end_frame": 90, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-7", "video_name": "a16", "start_frame": 62, "end_frame": 89, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-8", "video_name": "a16", "start_frame": 61, "end_frame": 88, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-9", "video_name": "a16", "start_frame": 60, "end_frame": 87, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-10", "video_name": "a16", "start_frame": 59, "end_frame": 86, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-11", "video_name": "a16", "start_frame": 58, "end_frame": 85, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "a16-12", "video_name": "a16", "start_frame": 57, "end_frame": 84, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83], "start_jump": 69, "end_jump": 84}
+{"id": "d03-0", "video_name": "d03", "start_frame": 54, "end_frame": 73, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-1", "video_name": "d03", "start_frame": 53, "end_frame": 72, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-2", "video_name": "d03", "start_frame": 52, "end_frame": 71, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-3", "video_name": "d03", "start_frame": 51, "end_frame": 70, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-4", "video_name": "d03", "start_frame": 50, "end_frame": 69, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-5", "video_name": "d03", "start_frame": 49, "end_frame": 68, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-6", "video_name": "d03", "start_frame": 48, "end_frame": 67, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-7", "video_name": "d03", "start_frame": 47, "end_frame": 66, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "d03-8", "video_name": "d03", "start_frame": 46, "end_frame": 65, "middle_frames": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64], "start_jump": 54, "end_jump": 65}
+{"id": "a03-0", "video_name": "a03", "start_frame": 73, "end_frame": 94, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-1", "video_name": "a03", "start_frame": 72, "end_frame": 93, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-2", "video_name": "a03", "start_frame": 71, "end_frame": 92, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-3", "video_name": "a03", "start_frame": 70, "end_frame": 91, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-4", "video_name": "a03", "start_frame": 69, "end_frame": 90, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-5", "video_name": "a03", "start_frame": 68, "end_frame": 89, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-6", "video_name": "a03", "start_frame": 67, "end_frame": 88, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-7", "video_name": "a03", "start_frame": 66, "end_frame": 87, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-8", "video_name": "a03", "start_frame": 65, "end_frame": 86, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "a03-9", "video_name": "a03", "start_frame": 64, "end_frame": 85, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84], "start_jump": 73, "end_jump": 85}
+{"id": "c07-0", "video_name": "c07", "start_frame": 50, "end_frame": 69, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-1", "video_name": "c07", "start_frame": 49, "end_frame": 68, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-2", "video_name": "c07", "start_frame": 48, "end_frame": 67, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-3", "video_name": "c07", "start_frame": 47, "end_frame": 66, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-4", "video_name": "c07", "start_frame": 46, "end_frame": 65, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-5", "video_name": "c07", "start_frame": 45, "end_frame": 64, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-6", "video_name": "c07", "start_frame": 44, "end_frame": 63, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-7", "video_name": "c07", "start_frame": 43, "end_frame": 62, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c07-8", "video_name": "c07", "start_frame": 42, "end_frame": 61, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d06-0", "video_name": "d06", "start_frame": 57, "end_frame": 82, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-1", "video_name": "d06", "start_frame": 56, "end_frame": 81, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-2", "video_name": "d06", "start_frame": 55, "end_frame": 80, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-3", "video_name": "d06", "start_frame": 54, "end_frame": 79, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-4", "video_name": "d06", "start_frame": 53, "end_frame": 78, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-5", "video_name": "d06", "start_frame": 52, "end_frame": 77, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-6", "video_name": "d06", "start_frame": 51, "end_frame": 76, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-7", "video_name": "d06", "start_frame": 50, "end_frame": 75, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-8", "video_name": "d06", "start_frame": 49, "end_frame": 74, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-9", "video_name": "d06", "start_frame": 48, "end_frame": 73, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-10", "video_name": "d06", "start_frame": 47, "end_frame": 72, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d06-11", "video_name": "d06", "start_frame": 46, "end_frame": 71, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 57, "end_jump": 71}
+{"id": "d08-0", "video_name": "d08", "start_frame": 45, "end_frame": 74, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-1", "video_name": "d08", "start_frame": 44, "end_frame": 73, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-2", "video_name": "d08", "start_frame": 43, "end_frame": 72, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-3", "video_name": "d08", "start_frame": 42, "end_frame": 71, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-4", "video_name": "d08", "start_frame": 41, "end_frame": 70, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-5", "video_name": "d08", "start_frame": 40, "end_frame": 69, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-6", "video_name": "d08", "start_frame": 39, "end_frame": 68, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-7", "video_name": "d08", "start_frame": 38, "end_frame": 67, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-8", "video_name": "d08", "start_frame": 37, "end_frame": 66, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-9", "video_name": "d08", "start_frame": 36, "end_frame": 65, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-10", "video_name": "d08", "start_frame": 35, "end_frame": 64, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-11", "video_name": "d08", "start_frame": 34, "end_frame": 63, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-12", "video_name": "d08", "start_frame": 33, "end_frame": 62, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d08-13", "video_name": "d08", "start_frame": 32, "end_frame": 61, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "d01-0", "video_name": "d01", "start_frame": 41, "end_frame": 60, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-1", "video_name": "d01", "start_frame": 40, "end_frame": 59, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-2", "video_name": "d01", "start_frame": 39, "end_frame": 58, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-3", "video_name": "d01", "start_frame": 38, "end_frame": 57, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-4", "video_name": "d01", "start_frame": 37, "end_frame": 56, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-5", "video_name": "d01", "start_frame": 36, "end_frame": 55, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-6", "video_name": "d01", "start_frame": 35, "end_frame": 54, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-7", "video_name": "d01", "start_frame": 34, "end_frame": 53, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "d01-8", "video_name": "d01", "start_frame": 33, "end_frame": 52, "middle_frames": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "start_jump": 41, "end_jump": 52}
+{"id": "c01-0", "video_name": "c01", "start_frame": 89, "end_frame": 162, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-1", "video_name": "c01", "start_frame": 88, "end_frame": 161, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-2", "video_name": "c01", "start_frame": 87, "end_frame": 160, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-3", "video_name": "c01", "start_frame": 86, "end_frame": 159, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-4", "video_name": "c01", "start_frame": 85, "end_frame": 158, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-5", "video_name": "c01", "start_frame": 84, "end_frame": 157, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-6", "video_name": "c01", "start_frame": 83, "end_frame": 156, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-7", "video_name": "c01", "start_frame": 82, "end_frame": 155, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-8", "video_name": "c01", "start_frame": 81, "end_frame": 154, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-9", "video_name": "c01", "start_frame": 80, "end_frame": 153, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-10", "video_name": "c01", "start_frame": 79, "end_frame": 152, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-11", "video_name": "c01", "start_frame": 78, "end_frame": 151, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-12", "video_name": "c01", "start_frame": 77, "end_frame": 150, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-13", "video_name": "c01", "start_frame": 76, "end_frame": 149, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-14", "video_name": "c01", "start_frame": 75, "end_frame": 148, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-15", "video_name": "c01", "start_frame": 74, "end_frame": 147, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-16", "video_name": "c01", "start_frame": 73, "end_frame": 146, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-17", "video_name": "c01", "start_frame": 72, "end_frame": 145, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-18", "video_name": "c01", "start_frame": 71, "end_frame": 144, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-19", "video_name": "c01", "start_frame": 70, "end_frame": 143, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-20", "video_name": "c01", "start_frame": 69, "end_frame": 142, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-21", "video_name": "c01", "start_frame": 68, "end_frame": 141, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-22", "video_name": "c01", "start_frame": 67, "end_frame": 140, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-23", "video_name": "c01", "start_frame": 66, "end_frame": 139, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-24", "video_name": "c01", "start_frame": 65, "end_frame": 138, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-25", "video_name": "c01", "start_frame": 64, "end_frame": 137, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-26", "video_name": "c01", "start_frame": 63, "end_frame": 136, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-27", "video_name": "c01", "start_frame": 62, "end_frame": 135, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-28", "video_name": "c01", "start_frame": 61, "end_frame": 134, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-29", "video_name": "c01", "start_frame": 60, "end_frame": 133, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-30", "video_name": "c01", "start_frame": 59, "end_frame": 132, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-31", "video_name": "c01", "start_frame": 58, "end_frame": 131, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-32", "video_name": "c01", "start_frame": 57, "end_frame": 130, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-33", "video_name": "c01", "start_frame": 56, "end_frame": 129, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-34", "video_name": "c01", "start_frame": 55, "end_frame": 128, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "c01-35", "video_name": "c01", "start_frame": 54, "end_frame": 127, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126], "start_jump": 89, "end_jump": 127}
+{"id": "d02-0", "video_name": "d02", "start_frame": 50, "end_frame": 65, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-1", "video_name": "d02", "start_frame": 49, "end_frame": 64, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-2", "video_name": "d02", "start_frame": 48, "end_frame": 63, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-3", "video_name": "d02", "start_frame": 47, "end_frame": 62, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-4", "video_name": "d02", "start_frame": 46, "end_frame": 61, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-5", "video_name": "d02", "start_frame": 45, "end_frame": 60, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "d02-6", "video_name": "d02", "start_frame": 44, "end_frame": 59, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 50, "end_jump": 59}
+{"id": "a13-0", "video_name": "a13", "start_frame": 73, "end_frame": 104, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-1", "video_name": "a13", "start_frame": 72, "end_frame": 103, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-2", "video_name": "a13", "start_frame": 71, "end_frame": 102, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-3", "video_name": "a13", "start_frame": 70, "end_frame": 101, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-4", "video_name": "a13", "start_frame": 69, "end_frame": 100, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-5", "video_name": "a13", "start_frame": 68, "end_frame": 99, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-6", "video_name": "a13", "start_frame": 67, "end_frame": 98, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-7", "video_name": "a13", "start_frame": 66, "end_frame": 97, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-8", "video_name": "a13", "start_frame": 65, "end_frame": 96, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-9", "video_name": "a13", "start_frame": 64, "end_frame": 95, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-10", "video_name": "a13", "start_frame": 63, "end_frame": 94, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-11", "video_name": "a13", "start_frame": 62, "end_frame": 93, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-12", "video_name": "a13", "start_frame": 61, "end_frame": 92, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-13", "video_name": "a13", "start_frame": 60, "end_frame": 91, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a13-14", "video_name": "a13", "start_frame": 59, "end_frame": 90, "middle_frames": [74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "start_jump": 73, "end_jump": 90}
+{"id": "a12-0", "video_name": "a12", "start_frame": 45, "end_frame": 74, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-1", "video_name": "a12", "start_frame": 44, "end_frame": 73, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-2", "video_name": "a12", "start_frame": 43, "end_frame": 72, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-3", "video_name": "a12", "start_frame": 42, "end_frame": 71, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-4", "video_name": "a12", "start_frame": 41, "end_frame": 70, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-5", "video_name": "a12", "start_frame": 40, "end_frame": 69, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-6", "video_name": "a12", "start_frame": 39, "end_frame": 68, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-7", "video_name": "a12", "start_frame": 38, "end_frame": 67, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-8", "video_name": "a12", "start_frame": 37, "end_frame": 66, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-9", "video_name": "a12", "start_frame": 36, "end_frame": 65, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-10", "video_name": "a12", "start_frame": 35, "end_frame": 64, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-11", "video_name": "a12", "start_frame": 34, "end_frame": 63, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-12", "video_name": "a12", "start_frame": 33, "end_frame": 62, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a12-13", "video_name": "a12", "start_frame": 32, "end_frame": 61, "middle_frames": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 45, "end_jump": 61}
+{"id": "a11-0", "video_name": "a11", "start_frame": 37, "end_frame": 62, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-1", "video_name": "a11", "start_frame": 36, "end_frame": 61, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-2", "video_name": "a11", "start_frame": 35, "end_frame": 60, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-3", "video_name": "a11", "start_frame": 34, "end_frame": 59, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-4", "video_name": "a11", "start_frame": 33, "end_frame": 58, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-5", "video_name": "a11", "start_frame": 32, "end_frame": 57, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-6", "video_name": "a11", "start_frame": 31, "end_frame": 56, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-7", "video_name": "a11", "start_frame": 30, "end_frame": 55, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-8", "video_name": "a11", "start_frame": 29, "end_frame": 54, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-9", "video_name": "a11", "start_frame": 28, "end_frame": 53, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-10", "video_name": "a11", "start_frame": 27, "end_frame": 52, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a11-11", "video_name": "a11", "start_frame": 26, "end_frame": 51, "middle_frames": [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "start_jump": 37, "end_jump": 51}
+{"id": "a04-0", "video_name": "a04", "start_frame": 87, "end_frame": 110, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-1", "video_name": "a04", "start_frame": 86, "end_frame": 109, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-2", "video_name": "a04", "start_frame": 85, "end_frame": 108, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-3", "video_name": "a04", "start_frame": 84, "end_frame": 107, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-4", "video_name": "a04", "start_frame": 83, "end_frame": 106, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-5", "video_name": "a04", "start_frame": 82, "end_frame": 105, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-6", "video_name": "a04", "start_frame": 81, "end_frame": 104, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-7", "video_name": "a04", "start_frame": 80, "end_frame": 103, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-8", "video_name": "a04", "start_frame": 79, "end_frame": 102, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-9", "video_name": "a04", "start_frame": 78, "end_frame": 101, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a04-10", "video_name": "a04", "start_frame": 77, "end_frame": 100, "middle_frames": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99], "start_jump": 87, "end_jump": 100}
+{"id": "a17-0", "video_name": "a17", "start_frame": 57, "end_frame": 86, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-1", "video_name": "a17", "start_frame": 56, "end_frame": 85, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-2", "video_name": "a17", "start_frame": 55, "end_frame": 84, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-3", "video_name": "a17", "start_frame": 54, "end_frame": 83, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-4", "video_name": "a17", "start_frame": 53, "end_frame": 82, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-5", "video_name": "a17", "start_frame": 52, "end_frame": 81, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-6", "video_name": "a17", "start_frame": 51, "end_frame": 80, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-7", "video_name": "a17", "start_frame": 50, "end_frame": 79, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-8", "video_name": "a17", "start_frame": 49, "end_frame": 78, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-9", "video_name": "a17", "start_frame": 48, "end_frame": 77, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-10", "video_name": "a17", "start_frame": 47, "end_frame": 76, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-11", "video_name": "a17", "start_frame": 46, "end_frame": 75, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-12", "video_name": "a17", "start_frame": 45, "end_frame": 74, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "a17-13", "video_name": "a17", "start_frame": 44, "end_frame": 73, "middle_frames": [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72], "start_jump": 57, "end_jump": 73}
+{"id": "e06-0", "video_name": "e06", "start_frame": 65, "end_frame": 86, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-1", "video_name": "e06", "start_frame": 64, "end_frame": 85, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-2", "video_name": "e06", "start_frame": 63, "end_frame": 84, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-3", "video_name": "e06", "start_frame": 62, "end_frame": 83, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-4", "video_name": "e06", "start_frame": 61, "end_frame": 82, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-5", "video_name": "e06", "start_frame": 60, "end_frame": 81, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-6", "video_name": "e06", "start_frame": 59, "end_frame": 80, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-7", "video_name": "e06", "start_frame": 58, "end_frame": 79, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-8", "video_name": "e06", "start_frame": 57, "end_frame": 78, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "e06-9", "video_name": "e06", "start_frame": 56, "end_frame": 77, "middle_frames": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 65, "end_jump": 77}
+{"id": "c04-0", "video_name": "c04", "start_frame": 84, "end_frame": 117, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-1", "video_name": "c04", "start_frame": 83, "end_frame": 116, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-2", "video_name": "c04", "start_frame": 82, "end_frame": 115, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-3", "video_name": "c04", "start_frame": 81, "end_frame": 114, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-4", "video_name": "c04", "start_frame": 80, "end_frame": 113, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-5", "video_name": "c04", "start_frame": 79, "end_frame": 112, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-6", "video_name": "c04", "start_frame": 78, "end_frame": 111, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-7", "video_name": "c04", "start_frame": 77, "end_frame": 110, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-8", "video_name": "c04", "start_frame": 76, "end_frame": 109, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-9", "video_name": "c04", "start_frame": 75, "end_frame": 108, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-10", "video_name": "c04", "start_frame": 74, "end_frame": 107, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-11", "video_name": "c04", "start_frame": 73, "end_frame": 106, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-12", "video_name": "c04", "start_frame": 72, "end_frame": 105, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-13", "video_name": "c04", "start_frame": 71, "end_frame": 104, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-14", "video_name": "c04", "start_frame": 70, "end_frame": 103, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "c04-15", "video_name": "c04", "start_frame": 69, "end_frame": 102, "middle_frames": [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 84, "end_jump": 102}
+{"id": "a05-0", "video_name": "a05", "start_frame": 77, "end_frame": 116, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-1", "video_name": "a05", "start_frame": 76, "end_frame": 115, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-2", "video_name": "a05", "start_frame": 75, "end_frame": 114, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-3", "video_name": "a05", "start_frame": 74, "end_frame": 113, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-4", "video_name": "a05", "start_frame": 73, "end_frame": 112, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-5", "video_name": "a05", "start_frame": 72, "end_frame": 111, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-6", "video_name": "a05", "start_frame": 71, "end_frame": 110, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-7", "video_name": "a05", "start_frame": 70, "end_frame": 109, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-8", "video_name": "a05", "start_frame": 69, "end_frame": 108, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-9", "video_name": "a05", "start_frame": 68, "end_frame": 107, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-10", "video_name": "a05", "start_frame": 67, "end_frame": 106, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-11", "video_name": "a05", "start_frame": 66, "end_frame": 105, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-12", "video_name": "a05", "start_frame": 65, "end_frame": 104, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-13", "video_name": "a05", "start_frame": 64, "end_frame": 103, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-14", "video_name": "a05", "start_frame": 63, "end_frame": 102, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-15", "video_name": "a05", "start_frame": 62, "end_frame": 101, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-16", "video_name": "a05", "start_frame": 61, "end_frame": 100, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-17", "video_name": "a05", "start_frame": 60, "end_frame": 99, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a05-18", "video_name": "a05", "start_frame": 59, "end_frame": 98, "middle_frames": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97], "start_jump": 77, "end_jump": 98}
+{"id": "a01-0", "video_name": "a01", "start_frame": 109, "end_frame": 136, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-1", "video_name": "a01", "start_frame": 108, "end_frame": 135, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-2", "video_name": "a01", "start_frame": 107, "end_frame": 134, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-3", "video_name": "a01", "start_frame": 106, "end_frame": 133, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-4", "video_name": "a01", "start_frame": 105, "end_frame": 132, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-5", "video_name": "a01", "start_frame": 104, "end_frame": 131, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-6", "video_name": "a01", "start_frame": 103, "end_frame": 130, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-7", "video_name": "a01", "start_frame": 102, "end_frame": 129, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-8", "video_name": "a01", "start_frame": 101, "end_frame": 128, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-9", "video_name": "a01", "start_frame": 100, "end_frame": 127, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-10", "video_name": "a01", "start_frame": 99, "end_frame": 126, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-11", "video_name": "a01", "start_frame": 98, "end_frame": 125, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "a01-12", "video_name": "a01", "start_frame": 97, "end_frame": 124, "middle_frames": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], "start_jump": 109, "end_jump": 124}
+{"id": "d07-0", "video_name": "d07", "start_frame": 56, "end_frame": 83, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-1", "video_name": "d07", "start_frame": 55, "end_frame": 82, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-2", "video_name": "d07", "start_frame": 54, "end_frame": 81, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-3", "video_name": "d07", "start_frame": 53, "end_frame": 80, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-4", "video_name": "d07", "start_frame": 52, "end_frame": 79, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-5", "video_name": "d07", "start_frame": 51, "end_frame": 78, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-6", "video_name": "d07", "start_frame": 50, "end_frame": 77, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-7", "video_name": "d07", "start_frame": 49, "end_frame": 76, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-8", "video_name": "d07", "start_frame": 48, "end_frame": 75, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-9", "video_name": "d07", "start_frame": 47, "end_frame": 74, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-10", "video_name": "d07", "start_frame": 46, "end_frame": 73, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-11", "video_name": "d07", "start_frame": 45, "end_frame": 72, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "d07-12", "video_name": "d07", "start_frame": 44, "end_frame": 71, "middle_frames": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], "start_jump": 56, "end_jump": 71}
+{"id": "c03-0", "video_name": "c03", "start_frame": 86, "end_frame": 109, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-1", "video_name": "c03", "start_frame": 85, "end_frame": 108, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-2", "video_name": "c03", "start_frame": 84, "end_frame": 107, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-3", "video_name": "c03", "start_frame": 83, "end_frame": 106, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-4", "video_name": "c03", "start_frame": 82, "end_frame": 105, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-5", "video_name": "c03", "start_frame": 81, "end_frame": 104, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-6", "video_name": "c03", "start_frame": 80, "end_frame": 103, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-7", "video_name": "c03", "start_frame": 79, "end_frame": 102, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-8", "video_name": "c03", "start_frame": 78, "end_frame": 101, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-9", "video_name": "c03", "start_frame": 77, "end_frame": 100, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "c03-10", "video_name": "c03", "start_frame": 76, "end_frame": 99, "middle_frames": [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98], "start_jump": 86, "end_jump": 99}
+{"id": "e04-0", "video_name": "e04", "start_frame": 127, "end_frame": 158, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-1", "video_name": "e04", "start_frame": 126, "end_frame": 157, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-2", "video_name": "e04", "start_frame": 125, "end_frame": 156, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-3", "video_name": "e04", "start_frame": 124, "end_frame": 155, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-4", "video_name": "e04", "start_frame": 123, "end_frame": 154, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-5", "video_name": "e04", "start_frame": 122, "end_frame": 153, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-6", "video_name": "e04", "start_frame": 121, "end_frame": 152, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-7", "video_name": "e04", "start_frame": 120, "end_frame": 151, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-8", "video_name": "e04", "start_frame": 119, "end_frame": 150, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-9", "video_name": "e04", "start_frame": 118, "end_frame": 149, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-10", "video_name": "e04", "start_frame": 117, "end_frame": 148, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-11", "video_name": "e04", "start_frame": 116, "end_frame": 147, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-12", "video_name": "e04", "start_frame": 115, "end_frame": 146, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-13", "video_name": "e04", "start_frame": 114, "end_frame": 145, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "e04-14", "video_name": "e04", "start_frame": 113, "end_frame": 144, "middle_frames": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143], "start_jump": 127, "end_jump": 144}
+{"id": "a06-0", "video_name": "a06", "start_frame": 58, "end_frame": 93, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-1", "video_name": "a06", "start_frame": 57, "end_frame": 92, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-2", "video_name": "a06", "start_frame": 56, "end_frame": 91, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-3", "video_name": "a06", "start_frame": 55, "end_frame": 90, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-4", "video_name": "a06", "start_frame": 54, "end_frame": 89, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-5", "video_name": "a06", "start_frame": 53, "end_frame": 88, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-6", "video_name": "a06", "start_frame": 52, "end_frame": 87, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-7", "video_name": "a06", "start_frame": 51, "end_frame": 86, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-8", "video_name": "a06", "start_frame": 50, "end_frame": 85, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-9", "video_name": "a06", "start_frame": 49, "end_frame": 84, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-10", "video_name": "a06", "start_frame": 48, "end_frame": 83, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-11", "video_name": "a06", "start_frame": 47, "end_frame": 82, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-12", "video_name": "a06", "start_frame": 46, "end_frame": 81, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-13", "video_name": "a06", "start_frame": 45, "end_frame": 80, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-14", "video_name": "a06", "start_frame": 44, "end_frame": 79, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-15", "video_name": "a06", "start_frame": 43, "end_frame": 78, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a06-16", "video_name": "a06", "start_frame": 42, "end_frame": 77, "middle_frames": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], "start_jump": 58, "end_jump": 77}
+{"id": "a18-0", "video_name": "a18", "start_frame": 69, "end_frame": 102, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-1", "video_name": "a18", "start_frame": 68, "end_frame": 101, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-2", "video_name": "a18", "start_frame": 67, "end_frame": 100, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-3", "video_name": "a18", "start_frame": 66, "end_frame": 99, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-4", "video_name": "a18", "start_frame": 65, "end_frame": 98, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-5", "video_name": "a18", "start_frame": 64, "end_frame": 97, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-6", "video_name": "a18", "start_frame": 63, "end_frame": 96, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-7", "video_name": "a18", "start_frame": 62, "end_frame": 95, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-8", "video_name": "a18", "start_frame": 61, "end_frame": 94, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-9", "video_name": "a18", "start_frame": 60, "end_frame": 93, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-10", "video_name": "a18", "start_frame": 59, "end_frame": 92, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-11", "video_name": "a18", "start_frame": 58, "end_frame": 91, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-12", "video_name": "a18", "start_frame": 57, "end_frame": 90, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-13", "video_name": "a18", "start_frame": 56, "end_frame": 89, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-14", "video_name": "a18", "start_frame": 55, "end_frame": 88, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "a18-15", "video_name": "a18", "start_frame": 54, "end_frame": 87, "middle_frames": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], "start_jump": 69, "end_jump": 87}
+{"id": "c02-0", "video_name": "c02", "start_frame": 67, "end_frame": 94, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-1", "video_name": "c02", "start_frame": 66, "end_frame": 93, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-2", "video_name": "c02", "start_frame": 65, "end_frame": 92, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-3", "video_name": "c02", "start_frame": 64, "end_frame": 91, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-4", "video_name": "c02", "start_frame": 63, "end_frame": 90, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-5", "video_name": "c02", "start_frame": 62, "end_frame": 89, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-6", "video_name": "c02", "start_frame": 61, "end_frame": 88, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-7", "video_name": "c02", "start_frame": 60, "end_frame": 87, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-8", "video_name": "c02", "start_frame": 59, "end_frame": 86, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-9", "video_name": "c02", "start_frame": 58, "end_frame": 85, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-10", "video_name": "c02", "start_frame": 57, "end_frame": 84, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-11", "video_name": "c02", "start_frame": 56, "end_frame": 83, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "c02-12", "video_name": "c02", "start_frame": 55, "end_frame": 82, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "a09-0", "video_name": "a09", "start_frame": 79, "end_frame": 106, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-1", "video_name": "a09", "start_frame": 78, "end_frame": 105, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-2", "video_name": "a09", "start_frame": 77, "end_frame": 104, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-3", "video_name": "a09", "start_frame": 76, "end_frame": 103, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-4", "video_name": "a09", "start_frame": 75, "end_frame": 102, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-5", "video_name": "a09", "start_frame": 74, "end_frame": 101, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-6", "video_name": "a09", "start_frame": 73, "end_frame": 100, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-7", "video_name": "a09", "start_frame": 72, "end_frame": 99, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-8", "video_name": "a09", "start_frame": 71, "end_frame": 98, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-9", "video_name": "a09", "start_frame": 70, "end_frame": 97, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-10", "video_name": "a09", "start_frame": 69, "end_frame": 96, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-11", "video_name": "a09", "start_frame": 68, "end_frame": 95, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "a09-12", "video_name": "a09", "start_frame": 67, "end_frame": 94, "middle_frames": [80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93], "start_jump": 79, "end_jump": 94}
+{"id": "d10-0", "video_name": "d10", "start_frame": 88, "end_frame": 113, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-1", "video_name": "d10", "start_frame": 87, "end_frame": 112, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-2", "video_name": "d10", "start_frame": 86, "end_frame": 111, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-3", "video_name": "d10", "start_frame": 85, "end_frame": 110, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-4", "video_name": "d10", "start_frame": 84, "end_frame": 109, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-5", "video_name": "d10", "start_frame": 83, "end_frame": 108, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-6", "video_name": "d10", "start_frame": 82, "end_frame": 107, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-7", "video_name": "d10", "start_frame": 81, "end_frame": 106, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-8", "video_name": "d10", "start_frame": 80, "end_frame": 105, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-9", "video_name": "d10", "start_frame": 79, "end_frame": 104, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-10", "video_name": "d10", "start_frame": 78, "end_frame": 103, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "d10-11", "video_name": "d10", "start_frame": 77, "end_frame": 102, "middle_frames": [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 88, "end_jump": 102}
+{"id": "a15-0", "video_name": "a15", "start_frame": 49, "end_frame": 66, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-1", "video_name": "a15", "start_frame": 48, "end_frame": 65, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-2", "video_name": "a15", "start_frame": 47, "end_frame": 64, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-3", "video_name": "a15", "start_frame": 46, "end_frame": 63, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-4", "video_name": "a15", "start_frame": 45, "end_frame": 62, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-5", "video_name": "a15", "start_frame": 44, "end_frame": 61, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-6", "video_name": "a15", "start_frame": 43, "end_frame": 60, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a15-7", "video_name": "a15", "start_frame": 42, "end_frame": 59, "middle_frames": [50, 51, 52, 53, 54, 55, 56, 57, 58], "start_jump": 49, "end_jump": 59}
+{"id": "a02-0", "video_name": "a02", "start_frame": 81, "end_frame": 120, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-1", "video_name": "a02", "start_frame": 80, "end_frame": 119, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-2", "video_name": "a02", "start_frame": 79, "end_frame": 118, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-3", "video_name": "a02", "start_frame": 78, "end_frame": 117, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-4", "video_name": "a02", "start_frame": 77, "end_frame": 116, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-5", "video_name": "a02", "start_frame": 76, "end_frame": 115, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-6", "video_name": "a02", "start_frame": 75, "end_frame": 114, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-7", "video_name": "a02", "start_frame": 74, "end_frame": 113, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-8", "video_name": "a02", "start_frame": 73, "end_frame": 112, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-9", "video_name": "a02", "start_frame": 72, "end_frame": 111, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-10", "video_name": "a02", "start_frame": 71, "end_frame": 110, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-11", "video_name": "a02", "start_frame": 70, "end_frame": 109, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-12", "video_name": "a02", "start_frame": 69, "end_frame": 108, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-13", "video_name": "a02", "start_frame": 68, "end_frame": 107, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-14", "video_name": "a02", "start_frame": 67, "end_frame": 106, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-15", "video_name": "a02", "start_frame": 66, "end_frame": 105, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-16", "video_name": "a02", "start_frame": 65, "end_frame": 104, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-17", "video_name": "a02", "start_frame": 64, "end_frame": 103, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "a02-18", "video_name": "a02", "start_frame": 63, "end_frame": 102, "middle_frames": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101], "start_jump": 81, "end_jump": 102}
+{"id": "d05-0", "video_name": "d05", "start_frame": 67, "end_frame": 94, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-1", "video_name": "d05", "start_frame": 66, "end_frame": 93, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-2", "video_name": "d05", "start_frame": 65, "end_frame": 92, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-3", "video_name": "d05", "start_frame": 64, "end_frame": 91, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-4", "video_name": "d05", "start_frame": 63, "end_frame": 90, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-5", "video_name": "d05", "start_frame": 62, "end_frame": 89, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-6", "video_name": "d05", "start_frame": 61, "end_frame": 88, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-7", "video_name": "d05", "start_frame": 60, "end_frame": 87, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-8", "video_name": "d05", "start_frame": 59, "end_frame": 86, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-9", "video_name": "d05", "start_frame": 58, "end_frame": 85, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-10", "video_name": "d05", "start_frame": 57, "end_frame": 84, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-11", "video_name": "d05", "start_frame": 56, "end_frame": 83, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "d05-12", "video_name": "d05", "start_frame": 55, "end_frame": 82, "middle_frames": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], "start_jump": 67, "end_jump": 82}
+{"id": "e05-0", "video_name": "e05", "start_frame": 55, "end_frame": 86, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-1", "video_name": "e05", "start_frame": 54, "end_frame": 85, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-2", "video_name": "e05", "start_frame": 53, "end_frame": 84, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-3", "video_name": "e05", "start_frame": 52, "end_frame": 83, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-4", "video_name": "e05", "start_frame": 51, "end_frame": 82, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-5", "video_name": "e05", "start_frame": 50, "end_frame": 81, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-6", "video_name": "e05", "start_frame": 49, "end_frame": 80, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-7", "video_name": "e05", "start_frame": 48, "end_frame": 79, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-8", "video_name": "e05", "start_frame": 47, "end_frame": 78, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-9", "video_name": "e05", "start_frame": 46, "end_frame": 77, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-10", "video_name": "e05", "start_frame": 45, "end_frame": 76, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-11", "video_name": "e05", "start_frame": 44, "end_frame": 75, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-12", "video_name": "e05", "start_frame": 43, "end_frame": 74, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-13", "video_name": "e05", "start_frame": 42, "end_frame": 73, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "e05-14", "video_name": "e05", "start_frame": 41, "end_frame": 72, "middle_frames": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "start_jump": 55, "end_jump": 72}
+{"id": "c05-0", "video_name": "c05", "start_frame": 48, "end_frame": 83, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-1", "video_name": "c05", "start_frame": 47, "end_frame": 82, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-2", "video_name": "c05", "start_frame": 46, "end_frame": 81, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-3", "video_name": "c05", "start_frame": 45, "end_frame": 80, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-4", "video_name": "c05", "start_frame": 44, "end_frame": 79, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-5", "video_name": "c05", "start_frame": 43, "end_frame": 78, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-6", "video_name": "c05", "start_frame": 42, "end_frame": 77, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-7", "video_name": "c05", "start_frame": 41, "end_frame": 76, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-8", "video_name": "c05", "start_frame": 40, "end_frame": 75, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-9", "video_name": "c05", "start_frame": 39, "end_frame": 74, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-10", "video_name": "c05", "start_frame": 38, "end_frame": 73, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-11", "video_name": "c05", "start_frame": 37, "end_frame": 72, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-12", "video_name": "c05", "start_frame": 36, "end_frame": 71, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-13", "video_name": "c05", "start_frame": 35, "end_frame": 70, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-14", "video_name": "c05", "start_frame": 34, "end_frame": 69, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-15", "video_name": "c05", "start_frame": 33, "end_frame": 68, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "c05-16", "video_name": "c05", "start_frame": 32, "end_frame": 67, "middle_frames": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], "start_jump": 48, "end_jump": 67}
+{"id": "d04-0", "video_name": "d04", "start_frame": 50, "end_frame": 69, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-1", "video_name": "d04", "start_frame": 49, "end_frame": 68, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-2", "video_name": "d04", "start_frame": 48, "end_frame": 67, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-3", "video_name": "d04", "start_frame": 47, "end_frame": 66, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-4", "video_name": "d04", "start_frame": 46, "end_frame": 65, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-5", "video_name": "d04", "start_frame": 45, "end_frame": 64, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-6", "video_name": "d04", "start_frame": 44, "end_frame": 63, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-7", "video_name": "d04", "start_frame": 43, "end_frame": 62, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "d04-8", "video_name": "d04", "start_frame": 42, "end_frame": 61, "middle_frames": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "start_jump": 50, "end_jump": 61}
+{"id": "c06-0", "video_name": "c06", "start_frame": 52, "end_frame": 77, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-1", "video_name": "c06", "start_frame": 51, "end_frame": 76, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-2", "video_name": "c06", "start_frame": 50, "end_frame": 75, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-3", "video_name": "c06", "start_frame": 49, "end_frame": 74, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-4", "video_name": "c06", "start_frame": 48, "end_frame": 73, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-5", "video_name": "c06", "start_frame": 47, "end_frame": 72, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-6", "video_name": "c06", "start_frame": 46, "end_frame": 71, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-7", "video_name": "c06", "start_frame": 45, "end_frame": 70, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-8", "video_name": "c06", "start_frame": 44, "end_frame": 69, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-9", "video_name": "c06", "start_frame": 43, "end_frame": 68, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-10", "video_name": "c06", "start_frame": 42, "end_frame": 67, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "c06-11", "video_name": "c06", "start_frame": 41, "end_frame": 66, "middle_frames": [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65], "start_jump": 52, "end_jump": 66}
+{"id": "e08-0", "video_name": "e08", "start_frame": 92, "end_frame": 117, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-1", "video_name": "e08", "start_frame": 91, "end_frame": 116, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-2", "video_name": "e08", "start_frame": 90, "end_frame": 115, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-3", "video_name": "e08", "start_frame": 89, "end_frame": 114, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-4", "video_name": "e08", "start_frame": 88, "end_frame": 113, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-5", "video_name": "e08", "start_frame": 87, "end_frame": 112, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-6", "video_name": "e08", "start_frame": 86, "end_frame": 111, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-7", "video_name": "e08", "start_frame": 85, "end_frame": 110, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-8", "video_name": "e08", "start_frame": 84, "end_frame": 109, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-9", "video_name": "e08", "start_frame": 83, "end_frame": 108, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-10", "video_name": "e08", "start_frame": 82, "end_frame": 107, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e08-11", "video_name": "e08", "start_frame": 81, "end_frame": 106, "middle_frames": [93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105], "start_jump": 92, "end_jump": 106}
+{"id": "e02-0", "video_name": "e02", "start_frame": 68, "end_frame": 105, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-1", "video_name": "e02", "start_frame": 67, "end_frame": 104, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-2", "video_name": "e02", "start_frame": 66, "end_frame": 103, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-3", "video_name": "e02", "start_frame": 65, "end_frame": 102, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-4", "video_name": "e02", "start_frame": 64, "end_frame": 101, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-5", "video_name": "e02", "start_frame": 63, "end_frame": 100, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-6", "video_name": "e02", "start_frame": 62, "end_frame": 99, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-7", "video_name": "e02", "start_frame": 61, "end_frame": 98, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-8", "video_name": "e02", "start_frame": 60, "end_frame": 97, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-9", "video_name": "e02", "start_frame": 59, "end_frame": 96, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-10", "video_name": "e02", "start_frame": 58, "end_frame": 95, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-11", "video_name": "e02", "start_frame": 57, "end_frame": 94, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-12", "video_name": "e02", "start_frame": 56, "end_frame": 93, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-13", "video_name": "e02", "start_frame": 55, "end_frame": 92, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-14", "video_name": "e02", "start_frame": 54, "end_frame": 91, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-15", "video_name": "e02", "start_frame": 53, "end_frame": 90, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-16", "video_name": "e02", "start_frame": 52, "end_frame": 89, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "e02-17", "video_name": "e02", "start_frame": 51, "end_frame": 88, "middle_frames": [69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], "start_jump": 68, "end_jump": 88}
+{"id": "a08-0", "video_name": "a08", "start_frame": 89, "end_frame": 110, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-1", "video_name": "a08", "start_frame": 88, "end_frame": 109, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-2", "video_name": "a08", "start_frame": 87, "end_frame": 108, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-3", "video_name": "a08", "start_frame": 86, "end_frame": 107, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-4", "video_name": "a08", "start_frame": 85, "end_frame": 106, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-5", "video_name": "a08", "start_frame": 84, "end_frame": 105, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-6", "video_name": "a08", "start_frame": 83, "end_frame": 104, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-7", "video_name": "a08", "start_frame": 82, "end_frame": 103, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-8", "video_name": "a08", "start_frame": 81, "end_frame": 102, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}
+{"id": "a08-9", "video_name": "a08", "start_frame": 80, "end_frame": 101, "middle_frames": [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100], "start_jump": 89, "end_jump": 101}

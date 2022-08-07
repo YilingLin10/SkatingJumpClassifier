@@ -19,8 +19,10 @@ import random
 ##    "end_jump": 15
 ## }
 ########################################################################
-csv_file='/home/lin10/projects/SkatingJumpClassifier/data/skatingloop_0801.csv'
-root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop'
+# csv_file='/home/lin10/projects/SkatingJumpClassifier/data/skatingloop_0801.csv'
+# root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop'
+csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv'
+root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train/'
 videos = list(Path(root_dir).glob("*/"))
 jump_frame = pd.read_csv(csv_file)
 data = []
@@ -53,38 +55,8 @@ for video in videos:
     }
     data.append(d)
     id += 1      
-    # Augmentation_1: randomly select 4 lengths that are less than jump_length
-
-    # random_lengths = sorted(random.sample(range(5, air_length+1), k=4))
-    # for l in random_lengths:
-    #     print("length = ", l)
-    #     start_frames = sorted(random.sample(range(start_jump - l + 2, start_jump + 1), k= 4))
-    #     for i, start_frame in enumerate(start_frames):
-    #         # check if start frame is valid
-    #         if not (Path(f'{root_dir}{video_name}/{start_frame}.jpg') in frames):
-    #             print("start_frame", start_frame , "is not valid")
-    #             break
-    #         end_frame = end_jump - 1 + l - (start_jump - start_frame + 1)
-    #         # check if end_frame is valid
-    #         if not (Path(f'{root_dir}{video_name}/{end_frame}.jpg') in frames):
-    #             print("end_frame", end_frame , "is not valid")
-    #             break
-    #         # print(i, "START:", start_frame, "|", "END:", end_frame)
-    #         # sample l middle_frames
-    #         middle_frames = sorted(random.sample(range(start_jump +1, end_jump), k=l))
-
-    #         d = {
-    #             "id": f'{video_name}-{i}',
-    #             "video_name": video_name,
-    #             "start_frame":start_frame,
-    #             "end_frame": end_frame,
-    #             "middle_frames": middle_frames,
-    #             "start_jump": start_jump,
-    #             "end_jump": end_jump
-    #         }
-    #         data.append(d)
         
-    # Augmentation_2: keep all middle frames, drop other frames
+    # Augmentation_3:
     # middle_len * i | middle_len | middle_len * j
     k = int(start_jump / air_length)
     l = int((last_frame - end_jump) / air_length)
@@ -107,7 +79,7 @@ for video in videos:
 
 print(len(data))
 
-json_file = '/home/lin10/projects/SkatingJumpClassifier/data/skating_data_3.jsonl'
+json_file = '/home/lin10/projects/SkatingJumpClassifier/data/train_data_aug3.jsonl'
 with open(os.path.join(json_file), "w") as f:
     for d in data:
         json.dump(d, f)
