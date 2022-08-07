@@ -8,6 +8,7 @@ import json
 import cv2
 from pathlib import Path
 from helper import *
+import csv
 
 ######### Dataset for whole videos ######
 class IceSkatingDataset(Dataset):
@@ -204,7 +205,7 @@ class IceSkatingEmbDataset(Dataset):
         # print(video_name, one, tags)
         tags = np.array(tags)
         
-        with open("{}{}/unnormalized_embeddings.csv".format(self.root_dir, original_video)) as f:
+        with open("{}{}/unnormalized_embeddings.csv".format(self.root_dir, video_name)) as f:
             csv_reader = csv.reader(f, delimiter=',')
             all_embeddings = []
             for embeddings in csv_reader:
@@ -214,7 +215,7 @@ class IceSkatingEmbDataset(Dataset):
         for frameNumber in frameNumber_list:
             frame_embeddings = all_embeddings[frameNumber]
             embeddings_list.append(np.array(frame_embeddings))
-        sample = {"keypoints": keypoints_list, "video_name": video_name, "output": tags}
+        sample = {"keypoints": embeddings_list, "video_name": video_name, "output": tags}
         return sample
     
     def collate_fn(self, samples):
