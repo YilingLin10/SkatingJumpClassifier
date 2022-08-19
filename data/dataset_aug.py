@@ -9,6 +9,7 @@ import cv2
 from pathlib import Path
 from helper import *
 import csv
+from read_skeleton import get_main_skeleton
 
 class IceSkatingAugDataset(Dataset):
 
@@ -67,23 +68,8 @@ class IceSkatingAugDataset(Dataset):
         tags = np.array(tags)
         # print(video_name, output)
         
-        with open("{}{}/alphapose-results.json".format(self.root_dir, original_video), 'r') as f:
-            alphaposeResults = json.load(f)
-        
-        keypoints_list = []
-        
-        for frameNumber in frameNumber_list:
-            pose2d = list(filter(lambda frame: frame["image_id"]=="{}.jpg".format(frameNumber), alphaposeResults))
-            if len(pose2d) > 1:
-                pose2d =max(pose2d, key=lambda val: val['score'])
-                keypoints= pose2d['keypoints']
-
-            if(type(pose2d) == list): 
-                if(len(pose2d) == 0): 
-                    keypoints= torch.zeros(51)
-                else: keypoints = pose2d[0]['keypoints']
-            
-            keypoints_list.append(np.array(keypoints))
+        alphaposeResults = get_main_skeleton("{}{}/alphapose-results.json".format(self.root_dir, original_video))
+        keypoints_list = [alphaposeResults[frameNumber][1].reshape(-1) for frameNumber in frameNumber_list]
         sample = {"keypoints": keypoints_list, "video_name": video_name, "output": tags}
         return sample
     
@@ -112,7 +98,7 @@ class IceSkatingAugDataset(Dataset):
             padded_keypoints = padded_keypoints + torch.randn(padded_keypoints.size(0), padded_keypoints.size(1), padded_keypoints.size(2))
         mask = torch.tensor(mask).bool()
         return {'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
-
+    
     def tag2idx(self, tag: str):
         return self.tag_mapping[tag]
 
@@ -223,35 +209,35 @@ class IceSkatingAugEmbDataset(Dataset):
 
 
 if __name__ == '__main__':
-    dataset = IceSkatingAugDataset(json_file='/home/lin10/projects/SkatingJumpClassifier/data/skating_data.jsonl',
-                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train/',
+    dataset = IceSkatingAugDataset(json_file='/home/lin10/projects/SkatingJumpClassifier/data/loop_data_aug3.jsonl',
+                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/train_loop/',
                                     tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
                                     use_crf=True,
-                                    add_noise=True)
+                                    add_noise=False)
 
-    dataloader = DataLoader(dataset,batch_size=2,
+    dataloader = DataLoader(dataset,batch_size=64,
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
 
     for i_batch, sample_batched in enumerate(dataloader):
-        # print(i_batch)
+        print(i_batch)
         # print(sample_batched['output'])
         # print(sample_batched['mask'])
         # print(sample_batched['keypoints'].size())
         break
 
     ### AugEmbDataset
-    emb_dataset = IceSkatingAugEmbDataset(json_file='/home/lin10/projects/SkatingJumpClassifier/data/skating_data_4.jsonl',
-                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop/',
-                                    tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
-                                    use_crf=True,
-                                    add_noise=True)
+    # emb_dataset = IceSkatingAugEmbDataset(json_file='/home/lin10/projects/SkatingJumpClassifier/data/skating_data_4.jsonl',
+    #                                 root_dir='/home/lin10/projects/SkatingJumpClassifier/20220801/Loop/',
+    #                                 tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
+    #                                 use_crf=True,
+    #                                 add_noise=True)
 
-    emb_dataloader = DataLoader(emb_dataset,batch_size=2,
-                        shuffle=True, num_workers=1, collate_fn=emb_dataset.collate_fn)
+    # emb_dataloader = DataLoader(emb_dataset,batch_size=2,
+    #                     shuffle=True, num_workers=1, collate_fn=emb_dataset.collate_fn)
 
-    for i_batch, sample_batched in enumerate(emb_dataloader):
-        # print(i_batch)
-        # print(sample_batched['output'])
-        # print(sample_batched['mask'])
-        print(sample_batched['keypoints'].size())
-        break
+    # for i_batch, sample_batched in enumerate(emb_dataloader):
+    #     # print(i_batch)
+    #     # print(sample_batched['output'])
+    #     # print(sample_batched['mask'])
+    #     print(sample_batched['keypoints'].size())
+    #     break

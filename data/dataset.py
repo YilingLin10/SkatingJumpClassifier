@@ -9,6 +9,7 @@ import cv2
 from pathlib import Path
 from helper import *
 import csv
+from read_skeleton import get_main_skeleton
 
 ######### Dataset for whole videos ######
 class IceSkatingDataset(Dataset):
@@ -82,22 +83,8 @@ class IceSkatingDataset(Dataset):
         # print(video_name, one, tags)
         tags = np.array(tags)
         
-        with open("{}{}/alphapose-results.json".format(self.root_dir, video_name), 'r') as f:
-            alphaposeResults = json.load(f)
-        
-        keypoints_list = []
-        for frameNumber in frameNumber_list:
-            pose2d = list(filter(lambda frame: frame["image_id"]=="{}.jpg".format(frameNumber), alphaposeResults))
-            if len(pose2d) > 1:
-                pose2d =max(pose2d, key=lambda val: val['score'])
-                keypoints= pose2d['keypoints']
-
-            if(type(pose2d) == list): 
-                if(len(pose2d) == 0): 
-                    keypoints= torch.zeros(51)
-                else: keypoints = pose2d[0]['keypoints']
-            
-            keypoints_list.append(np.array(keypoints))
+        alphaposeResults = get_main_skeleton("{}{}/alphapose-results.json".format(self.root_dir, video_name))
+        keypoints_list = [alphaposeResults[frameNumber][1].reshape(-1) for frameNumber in frameNumber_list]
         sample = {"keypoints": keypoints_list, "video_name": video_name, "output": tags}
         return sample
     
@@ -252,33 +239,33 @@ class IceSkatingEmbDataset(Dataset):
 
 
 if __name__ == '__main__':
-    dataset = IceSkatingDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv',
-                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test/',
+    dataset = IceSkatingDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/loop_0801.csv',
+                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test_loop/',
                                     tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
                                     use_crf=True,
                                     add_noise=False)
 
-    dataloader = DataLoader(dataset,batch_size=2,
+    dataloader = DataLoader(dataset,batch_size=64,
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
 
     for i_batch, sample_batched in enumerate(dataloader):
-        # print(i_batch)
-        # print(sample_batched['output'])
-        # print(sample_batched['keypoints'].size())
-        break
-    
-    ### EmbDataset test
-    emb_dataset = IceSkatingEmbDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv',
-                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test/',
-                                    tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
-                                    use_crf=True,
-                                    add_noise=False)
-
-    emb_dataloader = DataLoader(emb_dataset,batch_size=2,
-                        shuffle=True, num_workers=1, collate_fn=emb_dataset.collate_fn)
-
-    for i_batch, sample_batched in enumerate(emb_dataloader):
-        # print(i_batch)
+        print(i_batch)
         # print(sample_batched['output'])
         print(sample_batched['keypoints'].size())
         break
+    
+    ### EmbDataset test
+    # emb_dataset = IceSkatingEmbDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv',
+    #                                 root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test/',
+    #                                 tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
+    #                                 use_crf=True,
+    #                                 add_noise=False)
+
+    # emb_dataloader = DataLoader(emb_dataset,batch_size=2,
+    #                     shuffle=True, num_workers=1, collate_fn=emb_dataset.collate_fn)
+
+    # for i_batch, sample_batched in enumerate(emb_dataloader):
+    #     # print(i_batch)
+    #     # print(sample_batched['output'])
+    #     print(sample_batched['keypoints'].size())
+    #     break
