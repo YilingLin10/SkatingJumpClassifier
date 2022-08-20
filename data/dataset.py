@@ -9,12 +9,12 @@ import cv2
 from pathlib import Path
 from helper import *
 import csv
-from read_skeleton import get_main_skeleton
+from .read_skeleton import get_main_skeleton, subtract_features
 
 ######### Dataset for whole videos ######
 class IceSkatingDataset(Dataset):
 
-    def __init__(self, csv_file, root_dir, tag_mapping_file, use_crf, add_noise, transform=None):
+    def __init__(self, csv_file, root_dir, tag_mapping_file, use_crf, add_noise, subtract_feature, transform=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -27,10 +27,11 @@ class IceSkatingDataset(Dataset):
         self.transform = transform
         self.use_crf = use_crf
         self.add_noise = add_noise
+        self.subtract_feature = subtract_feature
         self.videos = list(Path(self.root_dir).glob("*/"))
         self.tag_mapping = json.loads(Path(tag_mapping_file).read_text())
         self._idx2tag = {idx: tag for tag, idx in self.tag_mapping.items()}
-    
+
     def __len__(self):
         return len(self.videos)
 
@@ -84,23 +85,29 @@ class IceSkatingDataset(Dataset):
         tags = np.array(tags)
         
         alphaposeResults = get_main_skeleton("{}{}/alphapose-results.json".format(self.root_dir, video_name))
-        keypoints_list = [alphaposeResults[frameNumber][1].reshape(-1) for frameNumber in frameNumber_list]
+        if self.subtract_feature:
+            keypoints_list = [subtract_features(alphaposeResults[frameNumber][1]) for frameNumber in frameNumber_list]
+        else:
+            keypoints_list = [np.delete(alphaposeResults[frameNumber][1], 2, axis=1).reshape(-1) for frameNumber in frameNumber_list]
         sample = {"keypoints": keypoints_list, "video_name": video_name, "output": tags}
         return sample
     
     def collate_fn(self, samples):
+        d_model = samples[0]['keypoints'][0].shape[0]
         if self.use_crf:
             samples.sort(key=lambda x: len(x['output']), reverse=True)
             to_len = len(samples[0]['output'])
         else:
             to_len = max(len(sample['output']) for sample in samples)
+        ids = []
         # pad samples['keypoints'] to to_len
-        keypoints = np.zeros((len(samples), to_len, 51))
+        keypoints = np.zeros((len(samples), to_len, d_model))
         # pad samples['output'] to to_len
         output = (-1) * np.ones((len(samples), to_len))
         mask = np.zeros((len(samples), to_len))
 
         for i in range(len(samples)):
+            ids.append(samples[i]['video_name'])
             output_len = len(samples[i]['output'])
             output[i][:output_len] = samples[i]['output']
             keypoints[i][:output_len] = samples[i]['keypoints']
@@ -112,7 +119,7 @@ class IceSkatingDataset(Dataset):
         if self.add_noise:
             padded_keypoints = padded_keypoints + torch.randn(padded_keypoints.size(0), padded_keypoints.size(1), padded_keypoints.size(2))
         mask = torch.tensor(mask).bool()
-        return {'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
+        return {'ids': ids, 'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
 
     def tag2idx(self, tag: str):
         return self.tag_mapping[tag]
@@ -211,6 +218,7 @@ class IceSkatingEmbDataset(Dataset):
             to_len = len(samples[0]['output'])
         else:
             to_len = max(len(sample['output']) for sample in samples)
+        ids = []
         # pad samples['keypoints'] to to_len
         keypoints = np.zeros((len(samples), to_len, 16))
         # pad samples['output'] to to_len
@@ -218,6 +226,7 @@ class IceSkatingEmbDataset(Dataset):
         mask = np.zeros((len(samples), to_len))
 
         for i in range(len(samples)):
+            ids.append(samples[i]['video_name'])
             output_len = len(samples[i]['output'])
             output[i][:output_len] = samples[i]['output']
             keypoints[i][:output_len] = samples[i]['keypoints']
@@ -229,7 +238,7 @@ class IceSkatingEmbDataset(Dataset):
         if self.add_noise:
             padded_keypoints = padded_keypoints + torch.randn(padded_keypoints.size(0), padded_keypoints.size(1), padded_keypoints.size(2))
         mask = torch.tensor(mask).bool()
-        return {'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
+        return {'ids': ids, 'keypoints': padded_keypoints, 'output': padded_output, 'mask': mask}
 
     def tag2idx(self, tag: str):
         return self.tag_mapping[tag]

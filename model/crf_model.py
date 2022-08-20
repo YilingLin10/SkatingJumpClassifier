@@ -76,7 +76,7 @@ class TransformerModel(nn.Module):
         self.crf = CRF(num_tags=num_class, batch_first=batch_first)
 
     def generate_src_mask(self, size):
-        ### (S, S)
+        ### (S, S) upper triangular matrix
         ### Not allowed to attend: True
         mask = (torch.triu(torch.ones(size, size)) == 1).transpose(0, 1)
         mask = mask.bool().masked_fill(mask == 0, True).masked_fill(mask == 1, False)
@@ -102,8 +102,12 @@ class TransformerModel(nn.Module):
         self.src_key_padding_mask = self.generate_key_padding_mask(src).to(device)
         # [batch_size, seq_len, 51]
         src = self.pos_encoder(src)
+
         # output --> [batch_size, seq_len, 51]
-        output = self.encoder(src, self.src_mask, self.src_key_padding_mask)
+        output = self.encoder(src, mask=None, src_key_padding_mask=self.src_key_padding_mask)
+        # TODO: left to right causal attention or not??
+        # output = self.encoder(src, self.src_mask, self.src_key_padding_mask)
+
         if not self.use_crf:
             # output --> [batch_size * seq_len, 51]
             output = output.contiguous().view(-1, self.d_model)

@@ -1,8 +1,13 @@
-data/test_balance
-data/train
-data_balance
+data/old
+data/loop
+data/flip
+data/flip_n_loop
+runs
+**/tools/*.png
 experiments
-
+20220801
+20220801_Jump_重新命名
+20220801 Jump_重新命名-20220801T040440Z-001.zip
 __pycache__/
 *.py[cod]
 

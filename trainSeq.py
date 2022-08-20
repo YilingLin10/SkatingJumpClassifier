@@ -15,19 +15,34 @@ from model.crf_model import TransformerModel
 from model.linear_model import *
 from data.dataset_aug import IceSkatingAugDataset, IceSkatingAugEmbDataset
 from data.dataset import IceSkatingDataset, IceSkatingEmbDataset
-from sklearn.metrics import accuracy_score, confusion_matrix
 from utils import eval_seq, eval_crf
 from config import CONFIG
 from tqdm import trange, tqdm
 from typing import Dict
 import json
 import os
+import csv
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=42, help='Random seed.')
     parser.add_argument(
         "--device", type=torch.device, help="cpu, cuda, cuda:0, cuda:1", default="cuda:0"
+    )
+    parser.add_argument(
+        "--dataset", type=str, default="loop", help="old, loop, flip, flip_n_loop"
+    )
+    parser.add_argument(
+        "--subtract_feature", action="store_true", help="whether or not to use subtracted features"
+    )
+    parser.add_argument(
+        "--model_path", type=str, default='./experiments/model_1/', help="path to saved model checkpoints"
+    )
+    parser.add_argument(
+        "--num_epochs", type=int, default=CONFIG.NUM_EPOCHS, help='number of epochs'
+    )
+    parser.add_argument(
+        "--num_layers", type=int, default=CONFIG.NUM_ENCODER_LAYERS, help='number of encoder layers'
     )
     args = parser.parse_args()
     return args
@@ -55,35 +70,44 @@ def main(args):
     same_seed(args.seed)
 
     ########### LOAD DATA ############
+    json_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/train_aug3.jsonl".format(args.dataset)
+    csv_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/info.csv".format(args.dataset)
+    train_dir = "/home/lin10/projects/SkatingJumpClassifier/data/{}/train/".format(args.dataset)
+    test_dir = "/home/lin10/projects/SkatingJumpClassifier/data/{}/test/".format(args.dataset)
+    tag2idx_file = "/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json"
     if CONFIG.USE_EMBS:
-        train_dataset = IceSkatingAugEmbDataset(json_file=CONFIG.JSON_FILE,
-                                            root_dir=CONFIG.TRAIN_DIR, 
-                                            tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+        train_dataset = IceSkatingAugEmbDataset(json_file=json_file,
+                                            root_dir=train_dir, 
+                                            tag_mapping_file=tag2idx_file, 
                                             use_crf=CONFIG.USE_CRF, 
                                             add_noise=CONFIG.ADD_NOISE)
-        test_dataset = IceSkatingEmbDataset(csv_file=CONFIG.CSV_FILE,
-                                        root_dir=CONFIG.TEST_DIR,
-                                        tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+        test_dataset = IceSkatingEmbDataset(csv_file=csv_file,
+                                        root_dir=test_dir,
+                                        tag_mapping_file=tag2idx_file, 
                                         use_crf=CONFIG.USE_CRF,
                                         add_noise=CONFIG.ADD_NOISE)
     else:
-        train_dataset = IceSkatingAugDataset(json_file=CONFIG.JSON_FILE,
-                                            root_dir=CONFIG.TRAIN_DIR, 
-                                            tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+        train_dataset = IceSkatingAugDataset(json_file=json_file,
+                                            root_dir=train_dir, 
+                                            tag_mapping_file=tag2idx_file, 
                                             use_crf=CONFIG.USE_CRF, 
-                                            add_noise=CONFIG.ADD_NOISE)
-        test_dataset = IceSkatingDataset(csv_file=CONFIG.CSV_FILE,
-                                        root_dir=CONFIG.TEST_DIR,
-                                        tag_mapping_file=CONFIG.TAG2IDX_FILE, 
+                                            add_noise=CONFIG.ADD_NOISE,
+                                            subtract_feature = args.subtract_feature)
+        test_dataset = IceSkatingDataset(csv_file=csv_file,
+                                        root_dir=test_dir,
+                                        tag_mapping_file=tag2idx_file, 
                                         use_crf=CONFIG.USE_CRF,
-                                        add_noise=CONFIG.ADD_NOISE)
+                                        add_noise=CONFIG.ADD_NOISE,
+                                        subtract_feature = args.subtract_feature)
     trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
     testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
+    d_model = 9 if args.subtract_feature else CONFIG.D_MODEL
+    nhead = 3 if args.subtract_feature else CONFIG.NUM_HEADS
     model = TransformerModel(
-                    d_model = CONFIG.D_MODEL,
-                    nhead = CONFIG.NUM_HEADS, 
-                    num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
+                    d_model = d_model,
+                    nhead = nhead, 
+                    num_encoder_layers = args.num_layers,
                     dim_feedforward = CONFIG.DIM_FEEDFORWARD,
                     dropout = 0.1,
                     batch_first = True,
@@ -93,12 +117,8 @@ def main(args):
     writer = SummaryWriter()
     optimizer = torch.optim.Adam(model.parameters(), lr=CONFIG.LR, betas=(0.9, 0.999))
 
-    now = datetime.datetime.now()
-    tinfo = "%d-%d-%d"%(now.year, now.month, now.day)
-    exp_path = "./experiments/"
-    model_name = "transformer"
-    model_path = exp_path + tinfo + "_" + model_name + "/"
-    save_path = model_path + "save/"
+    model_path = args.model_path
+    save_path = model_path + 'save/'
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     ############ START ITERATION ##############
@@ -107,7 +127,7 @@ def main(args):
     eval_record = []
     steps = 0
     best_eval = 0
-    epochss = trange(CONFIG.NUM_EPOCHS, desc="Epoch")
+    epochss = trange(args.num_epochs, desc="Epoch")
     for epochs in epochss:
         ################# TRAINING ##############
         model.train()
@@ -138,11 +158,17 @@ def main(args):
                 eval_results_test = eval_crf(model, testloader) if CONFIG.USE_CRF else eval_seq(model, testloader)
                 writer.add_scalar('TRAIN/ACCURACY', eval_results_train['accuracy'], steps)
                 writer.add_scalar('EVAL/ACCURACY', eval_results_test['accuracy'], steps)
-                eval_record.append({"steps":steps, "train":eval_results_train, "test":eval_results_test})
+                eval_record.append({"steps":steps, "train":{"accuracy":eval_results_train['accuracy']}, "test":{"accuracy":eval_results_test['accuracy']}})
 
                 # Dump evaluation record
                 with open(model_path+'eval_record.json', 'w') as file:
                     json.dump(eval_record, file)
+                
+                # Dump prediction
+                with open(model_path+'prediction.csv', 'a') as f:
+                    csv_writer = csv.writer(f)
+                    for id, label, pred in zip(eval_results_test['ids'], eval_results_test['labels'], eval_results_test['predictions']):
+                        csv_writer.writerow([steps, id, label, pred])
 
                 ####### SAVE THE BEST MODEL #########
                 if eval_results_test["accuracy"] > best_eval:

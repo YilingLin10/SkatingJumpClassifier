@@ -4,12 +4,14 @@ import numpy as np
 import os
 import cv2
 from scipy.spatial import distance
+from matplotlib import pyplot as plt
 import warnings
-
 warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning) 
+
 SKELETON_CONF_THRESHOLD=0.0
+# Return keypoint data for each frame [image_id, array(17, 3)]
 def get_main_skeleton(path_to_json):
-  with open(path_to_json) as f:
+  with open(os.path.join(path_to_json, 'alphapose-results.json')) as f:
     json_skeleton = json.load(f)
   
   # Get first image id
@@ -60,15 +62,37 @@ def get_main_skeleton(path_to_json):
 
   return keypoints_info
 
-# subtract right joint x from left joint x...
-def subtract_features(keypoints):
-  # input: [17, 2]
-  # output: [X]
-  subtracted_keypoints = []
-  # head x value
-  subtracted_keypoints.append(keypoints[0][0])
-  for i in range(1, 17, 2):
-    subtraction = keypoints[i][0] - keypoints[i+1][0]
-    subtracted_keypoints.append(subtraction)
-  
-  return np.array(subtracted_keypoints)
+def hps(X):
+  X_mean = np.mean(X, axis=0)
+  X_centered = X -  X_mean
+  X_cov = np.cov(X_centered.T)
+
+  # * 3.1. Get Eigen Values and Vectors
+  eigen_values, eigen_vectors = np.linalg.eig(X_cov)
+  # * 3.2. Get the top M eigen values indices
+  top_M_idx = np.argsort(eigen_values)[::-1][-1]
+
+  # return np.dot(X_mean, top_M_idx)
+  return eigen_values[top_M_idx]
+    
+if __name__ == '__main__':
+    # results = json.load(open("/home/lin10/projects/SkatingJumpClassifier/data/train/d05/alphapose-results.json"))
+    results = get_main_skeleton("/home/lin10/projects/SkatingJumpClassifier/data/train/d05")
+    hpss = []
+    frames = []
+    print(len(results))
+    for i in range(0, len(results)):
+        keypoints = np.array(results[i][1]).reshape(17,3)[:,:2]
+        hps_val = hps(keypoints)
+        hpss.append(hps_val)
+        frames.append(i)
+    
+    fig = plt.figure()
+    ax = plt.subplot(111)
+
+    # der = np.gradient(hpss,frames)
+
+    ax.plot(frames, hpss)
+    plt.xticks(np.arange(min(frames), max(frames) + 1, 10))
+    plt.grid()
+    fig.savefig('./tools/hps_d05_dif.png')
