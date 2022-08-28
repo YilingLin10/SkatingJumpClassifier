@@ -5,10 +5,16 @@ import os
 import cv2
 from scipy.spatial import distance
 import warnings
+import pickle
+import glob
+from pathlib import Path
 
 warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning) 
 SKELETON_CONF_THRESHOLD=0.0
 def get_main_skeleton(path_to_json):
+  root_dir = os.path.dirname(path_to_json)
+  frames = list(Path(f'{root_dir}').glob("*.jpg"))
+  last_frame = last_frame = sorted([int(os.path.split(frame)[1].replace('.jpg','')) for frame in frames])[-1]
   with open(path_to_json) as f:
     json_skeleton = json.load(f)
   
@@ -53,7 +59,7 @@ def get_main_skeleton(path_to_json):
   keypoints_info = np.array(keypoints_info)
 
   # Insert missing frame info
-  for i in range(cur_frame+1):
+  for i in range(last_frame+1):
     if i not in keypoints_info[:,0]:
       insert_row = np.concatenate([[i],keypoints_info[i-1,1:]], axis=0)
       keypoints_info = np.insert(keypoints_info, i, insert_row, axis=0)
@@ -63,12 +69,24 @@ def get_main_skeleton(path_to_json):
 # subtract right joint x from left joint x...
 def subtract_features(keypoints):
   # input: [17, 2]
-  # output: [X]
+  # output: [8]
   subtracted_keypoints = []
-  # head x value
-  subtracted_keypoints.append(keypoints[0][0])
   for i in range(1, 17, 2):
     subtraction = keypoints[i][0] - keypoints[i+1][0]
     subtracted_keypoints.append(subtraction)
   
   return np.array(subtracted_keypoints)
+
+def get_posetriplet(path_to_pickle):
+  with open(path_to_pickle, 'rb') as fp:
+      # [num_frames, 16, 3]
+      pose3d = pickle.load(fp)
+
+  results = pose3d['result']
+  return results
+  
+
+if __name__ == '__main__':
+  path_to_json = "/home/lin10/projects/SkatingJumpClassifier/data/loop/train/Loop_22/alphapose-results.json"
+  alphaposeResults = get_main_skeleton(path_to_json)
+  print(len(alphaposeResults))

@@ -1,6 +1,7 @@
 import torch 
 from sklearn.metrics import accuracy_score, confusion_matrix
 import numpy as np
+import torch.nn.functional as F
 
 ############ Evaluation ############
 def eval(model, dataset):
@@ -24,24 +25,7 @@ def eval(model, dataset):
 
     return {"accuracy": float(np.array(acc_list).mean()),"tn": int(tn_total),"fp": int(fp_total) , "fn": int(fn_total), "tp": int(tp_total)}
 
-def accuracy(tags, preds):
-    total_token = 0
-    correct_token = 0
-    correct_sequence = 0
-    for tag, pred in zip(tags, preds):
-        total_token += len(pred)
-        if tag == pred:
-            correct_sequence += 1
-        for t, p in zip(tag, pred):
-            if t == p:
-                correct_token += 1
-    token_acc = correct_token / total_token
-    join_acc = correct_sequence / len(tags)            
-    # print("Token Accuracy: {:.1%}".format(token_acc))
-    # print("Join Accuracy: {:.1%}".format(join_acc))
-    return token_acc, join_acc
-
-def eval_seq(model, dataset):
+def eval_seq(model, dataset, mode):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     token_acc_list =[]
     join_acc_list = []
@@ -56,7 +40,7 @@ def eval_seq(model, dataset):
 
             output_ids.extend(batch['ids'])          
             for labels, m in zip(batch_labels, mask):
-                labels_list.append(labels[m==True].tolist())
+                labels_list += (labels[m==True].tolist())
                 output_labels.append(labels[m==True].tolist())
             
             batch_preds = torch.argmax(output,dim=1)
@@ -64,21 +48,24 @@ def eval_seq(model, dataset):
             batch_preds = batch_preds.view(batch_size, -1)
 
             for preds, m in zip(batch_preds, mask):
-                preds_list.append(preds[m==True].tolist())
+                preds_list += (preds[m==True].tolist())
                 output_preds.append(preds[m==True].tolist())
 
-    token_acc, join_acc = accuracy(labels_list, preds_list)
-    print("************")
-    print("PREDICTION")
-    print(labels_list[0])
-    print(preds_list[0])
-    print("************")
-    print("TOKEN ACCURACY: {:.1%}".format(token_acc))
-    print("JOIN ACCURACY: {:.1%}".format(join_acc))
+    preds_list_tensor = torch.tensor(preds_list, dtype=float)
+    labels_list_tensor = torch.tensor(labels_list, dtype=float)
+    token_acc = (preds_list_tensor == labels_list_tensor).sum()/len(preds_list_tensor)
+    mse = F.mse_loss(labels_list_tensor, preds_list_tensor)
+    if mode == "test":
+        print("************")
+        print(batch_labels[0].tolist())
+        print(batch_preds[0].tolist())
+        print("************")
+        print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    print("MSE: {:.2f}".format(mse))
     print("================= END OF EVALUATION ================")
-    return {"accuracy": token_acc, "ids": output_ids, "predictions": output_preds, "labels": output_labels}
+    return {"accuracy": token_acc.detach().item(),"mse": mse.detach().item(), "ids": output_ids, "predictions": output_preds, "labels": output_labels}
 
-def eval_crf(model, dataset):
+def eval_crf(model, dataset, mode):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     preds_list, labels_list = [], []
     output_ids, output_preds, output_labels = [], [], []
@@ -97,13 +84,17 @@ def eval_crf(model, dataset):
                 labels_list += labels[m==True].tolist()
                 output_labels.append(labels[m==True].tolist())
     
-    preds_list_tensor = torch.tensor(preds_list)
-    labels_list_tensor = torch.tensor(labels_list)
+    preds_list_tensor = torch.tensor(preds_list, dtype=float)
+    labels_list_tensor = torch.tensor(labels_list, dtype=float)
     token_acc = (preds_list_tensor == labels_list_tensor).sum()/len(preds_list_tensor)
-    print("************")
-    print(batch_labels[0].tolist())
-    print(batch_preds[0])
-    print("************")
-    print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    mse = F.mse_loss(labels_list_tensor, preds_list_tensor)
+    if mode == "test":
+        print("************")
+        print(batch_labels[0].tolist())
+        print(batch_preds[0])
+        print("************")
+        print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    print("MSE: {:.2f}".format(mse))
     print("================= END OF EVALUATION ================")
-    return {"accuracy": token_acc.detach().item(), "ids": output_ids, "predictions": output_preds, "labels": output_labels}
+    return {"accuracy": token_acc.detach().item(),"mse": mse.detach().item(),"ids": output_ids, "predictions": output_preds, "labels": output_labels}
+    

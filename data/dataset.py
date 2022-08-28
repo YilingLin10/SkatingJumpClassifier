@@ -9,12 +9,12 @@ import cv2
 from pathlib import Path
 from helper import *
 import csv
-from .read_skeleton import get_main_skeleton, subtract_features
+from .read_skeleton import get_main_skeleton, subtract_features, get_posetriplet
 
 ######### Dataset for whole videos ######
 class IceSkatingDataset(Dataset):
 
-    def __init__(self, csv_file, root_dir, tag_mapping_file, use_crf, add_noise, subtract_feature, transform=None):
+    def __init__(self, csv_file, root_dir, tag_mapping_file, use_crf, add_noise, subtract_feature, pose3d, transform=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -22,12 +22,13 @@ class IceSkatingDataset(Dataset):
             transform (callable, optional): Optional transform to be applied
                 on a sample.
         """
-        self.jump_frame = pd.read_csv(csv_file)
+        self.jump_frame = pd.read_csv(csv_file, na_values=["None"])
         self.root_dir = root_dir
         self.transform = transform
         self.use_crf = use_crf
         self.add_noise = add_noise
         self.subtract_feature = subtract_feature
+        self.pose3d = pose3d
         self.videos = list(Path(self.root_dir).glob("*/"))
         self.tag_mapping = json.loads(Path(tag_mapping_file).read_text())
         self._idx2tag = {idx: tag for tag, idx in self.tag_mapping.items()}
@@ -43,17 +44,14 @@ class IceSkatingDataset(Dataset):
         frames = list(Path(f'{self.root_dir}/{video_name}').glob("*.jpg"))
         frameNumber_list = sorted([int(Path(frame).parts[-1].replace(".jpg","")) for frame in frames])
         video_data = self.jump_frame.loc[self.jump_frame['Video'] == video_name]
-        
         tags = []
-        one = True
         start_frame = frameNumber_list[0]
         start_jump_1 = int(video_data['start_jump_1'])
         end_jump_1 = int(video_data['end_jump_1'])
         end_frame = frameNumber_list[-1]
-        ####### TODO: Fix this bug
-        if(video_data['start_jump_2'].isnull().bool()):
+
+        if video_data['start_jump_2'].item() > 0:
             ###### the video includes 2 jumps 
-            one = False
             start_jump_2 = int(video_data['start_jump_2'])
             end_jump_2 = int(video_data['end_jump_2'])
             for i in range(start_frame, start_jump_1):
@@ -84,12 +82,19 @@ class IceSkatingDataset(Dataset):
         # print(video_name, one, tags)
         tags = np.array(tags)
         
-        alphaposeResults = get_main_skeleton("{}{}/alphapose-results.json".format(self.root_dir, video_name))
-        if self.subtract_feature:
-            keypoints_list = [subtract_features(alphaposeResults[frameNumber][1]) for frameNumber in frameNumber_list]
+        if self.pose3d:
+            posetripletResults = get_posetriplet("{}{}/{}_pred3D.pkl".format(self.root_dir, video_name, video_name))
+            keypoints_list = [posetripletResults[frameNumber].reshape(-1) for frameNumber in frameNumber_list]
         else:
+            alphaposeResults = get_main_skeleton("{}{}/alphapose-results.json".format(self.root_dir, video_name))
+            assert len(frames) == len(alphaposeResults), "{} error".format(video_name)
+            subtractions_list = [subtract_features(alphaposeResults[frameNumber][1]) for frameNumber in frameNumber_list]
             keypoints_list = [np.delete(alphaposeResults[frameNumber][1], 2, axis=1).reshape(-1) for frameNumber in frameNumber_list]
-        sample = {"keypoints": keypoints_list, "video_name": video_name, "output": tags}
+            if self.subtract_feature:
+                features_list = np.append(keypoints_list, subtractions_list, axis=1)  
+            else:
+                features_list = keypoints_list
+        sample = {"keypoints": features_list, "video_name": video_name, "output": tags}
         return sample
     
     def collate_fn(self, samples):
@@ -138,7 +143,7 @@ class IceSkatingEmbDataset(Dataset):
             transform (callable, optional): Optional transform to be applied
                 on a sample.
         """
-        self.jump_frame = pd.read_csv(csv_file)
+        self.jump_frame = pd.read_csv(csv_file, na_values=["None"])
         self.root_dir = root_dir
         self.transform = transform
         self.use_crf = use_crf
@@ -160,15 +165,13 @@ class IceSkatingEmbDataset(Dataset):
         video_data = self.jump_frame.loc[self.jump_frame['Video'] == video_name]
         
         tags = []
-        one = True
         start_frame = frameNumber_list[0]
         start_jump_1 = int(video_data['start_jump_1'])
         end_jump_1 = int(video_data['end_jump_1'])
         end_frame = frameNumber_list[-1]
-        ####### TODO: Fix this bug
-        if(video_data['start_jump_2'].isnull().bool()):
+
+        if video_data['start_jump_2'].item() > 0:
             ###### the video includes 2 jumps 
-            one = False
             start_jump_2 = int(video_data['start_jump_2'])
             end_jump_2 = int(video_data['end_jump_2'])
             for i in range(start_frame, start_jump_1):
@@ -248,20 +251,22 @@ class IceSkatingEmbDataset(Dataset):
 
 
 if __name__ == '__main__':
-    dataset = IceSkatingDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/loop_0801.csv',
-                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/test_loop/',
+    dataset = IceSkatingDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/all_jump/info.csv',
+                                    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/all_jump/test/',
                                     tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
                                     use_crf=True,
-                                    add_noise=False)
+                                    add_noise=False,
+                                    subtract_feature=True,
+                                    pose3d=False)
 
     dataloader = DataLoader(dataset,batch_size=64,
-                        shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
+                        shuffle=False, num_workers=1, collate_fn=dataset.collate_fn)
 
     for i_batch, sample_batched in enumerate(dataloader):
         print(i_batch)
         # print(sample_batched['output'])
         print(sample_batched['keypoints'].size())
-        break
+        # break
     
     ### EmbDataset test
     # emb_dataset = IceSkatingEmbDataset(csv_file='/home/lin10/projects/SkatingJumpClassifier/data/iceskatingjump.csv',
