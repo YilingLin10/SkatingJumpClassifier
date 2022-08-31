@@ -75,38 +75,14 @@ class TransformerModel(nn.Module):
         self.use_crf = use_crf
         self.crf = CRF(num_tags=num_class, batch_first=batch_first)
 
-    def generate_src_mask(self, size):
-        ### (S, S) upper triangular matrix
-        ### Not allowed to attend: True
-        mask = (torch.triu(torch.ones(size, size)) == 1).transpose(0, 1)
-        mask = mask.bool().masked_fill(mask == 0, True).masked_fill(mask == 1, False)
-        return mask
-    
-    def generate_key_padding_mask(self, batch):
-        # (N, S)
-        # PAD: 1, CONSIDER:0 
-        batch = batch.detach().to('cpu').numpy()
-        padding_mask = np.ones((batch.shape[0], batch.shape[1]))
-        for i, sample in enumerate(batch):
-            # (seq_len, 51)
-            for j, skeleton in enumerate(sample):
-                if not np.any(skeleton):
-                    break
-                padding_mask[i][j] = 0
-        return torch.FloatTensor(padding_mask)
-
-    def _get_encoder_feature(self, src):
-        device = src.device
-        mask = self.generate_src_mask(src.size()[1]).to(device)
-        self.src_mask = mask
-        self.src_key_padding_mask = self.generate_key_padding_mask(src).to(device)
+    def _get_encoder_feature(self, src, mask):
+        ### True: not attend, False: attend
+        self.src_key_padding_mask = ~mask
         # [batch_size, seq_len, 51]
         src = self.pos_encoder(src)
 
         # output --> [batch_size, seq_len, 51]
         output = self.encoder(src, mask=None, src_key_padding_mask=self.src_key_padding_mask)
-        # TODO: left to right causal attention or not??
-        # output = self.encoder(src, self.src_mask, self.src_key_padding_mask)
 
         if not self.use_crf:
             # output --> [batch_size * seq_len, 51]
@@ -116,7 +92,7 @@ class TransformerModel(nn.Module):
         return output
 
     def forward(self, src, mask):
-        output = self._get_encoder_feature(src)
+        output = self._get_encoder_feature(src, mask)
         if self.use_crf:
             ### type: List
             return self.crf.decode(output, mask)
@@ -124,7 +100,7 @@ class TransformerModel(nn.Module):
             return F.log_softmax(output, dim=1)
     
     def loss_fn(self, src, target, mask):
-        pred = self._get_encoder_feature(src)
+        pred = self._get_encoder_feature(src, mask)
         return -self.crf.forward(pred, target, mask, reduction='mean')
 
 if __name__ == '__main__':

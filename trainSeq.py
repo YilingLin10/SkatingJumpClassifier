@@ -14,8 +14,7 @@ from torch.autograd import Variable
 
 from model.crf_model import TransformerModel
 from model.linear_model import *
-from data.dataset_aug import IceSkatingAugDataset, IceSkatingAugEmbDataset
-from data.dataset import IceSkatingDataset, IceSkatingEmbDataset
+from data.new_dataset import IceSkatingDataset
 from utils import eval_seq, eval_crf
 from config import CONFIG
 from tqdm import trange, tqdm
@@ -24,7 +23,7 @@ import json
 import os
 import csv
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4, 5, 6"
 def parse_args() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=42, help='Random seed.')
@@ -95,50 +94,28 @@ def main(args):
     print("USE_CRF: {}".format(CONFIG.USE_CRF))
     print("================================")
     ########### LOAD DATA ############
-    json_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/train_aug3.jsonl".format(args.dataset)
-    csv_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/info.csv".format(args.dataset)
-    train_dir = "/home/lin10/projects/SkatingJumpClassifier/data/{}/train/".format(args.dataset)
-    test_dir = "/home/lin10/projects/SkatingJumpClassifier/data/{}/test/".format(args.dataset)
+    train_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/cache/train.pkl".format(args.dataset)
+    test_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/cache/test.pkl".format(args.dataset)
     tag2idx_file = "/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json"
-    pose3d = True if args.estimator == "posetriplet" else False
-    if CONFIG.USE_EMBS:
-        train_dataset = IceSkatingAugEmbDataset(json_file=json_file,
-                                            root_dir=train_dir, 
-                                            tag_mapping_file=tag2idx_file, 
-                                            use_crf=CONFIG.USE_CRF, 
-                                            add_noise=CONFIG.ADD_NOISE)
-        test_dataset = IceSkatingEmbDataset(csv_file=csv_file,
-                                        root_dir=test_dir,
-                                        tag_mapping_file=tag2idx_file, 
-                                        use_crf=CONFIG.USE_CRF,
-                                        add_noise=CONFIG.ADD_NOISE)
-    else:
-        train_dataset = IceSkatingAugDataset(json_file=json_file,
-                                            root_dir=train_dir, 
-                                            tag_mapping_file=tag2idx_file, 
-                                            use_crf=CONFIG.USE_CRF, 
-                                            add_noise=CONFIG.ADD_NOISE,
-                                            subtract_feature=args.subtract_feature,
-                                            pose3d=pose3d)
-        test_dataset = IceSkatingDataset(csv_file=csv_file,
-                                        root_dir=test_dir,
-                                        tag_mapping_file=tag2idx_file, 
-                                        use_crf=CONFIG.USE_CRF,
-                                        add_noise=CONFIG.ADD_NOISE,
-                                        subtract_feature=args.subtract_feature,
-                                        pose3d=pose3d)
+    train_dataset = IceSkatingDataset(pkl_file=train_file, 
+                                    tag_mapping_file=tag2idx_file, 
+                                    use_crf=CONFIG.USE_CRF, 
+                                    add_noise=CONFIG.ADD_NOISE,
+                                    subtract_feature=args.subtract_feature)
+    test_dataset = IceSkatingDataset(pkl_file=test_file, 
+                                    tag_mapping_file=tag2idx_file, 
+                                    use_crf=CONFIG.USE_CRF, 
+                                    add_noise=CONFIG.ADD_NOISE,
+                                    subtract_feature=args.subtract_feature)
     trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
-    testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=test_dataset.collate_fn)
+    testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=False, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
-    if args.estimator == "posetriplet":
-        d_model = 48
-        nhead = 3
-    elif args.subtract_feature:
+    if args.subtract_feature:
         d_model = 42
         nhead = 3
     else: 
-        d_model = CONFIG.D_MODEL
-        nhead = CONFIG.NUM_HEADS
+        d_model = 34
+        nhead = 2
     model = TransformerModel(
                     d_model = d_model,
                     nhead = nhead, 
@@ -151,7 +128,7 @@ def main(args):
             ).to(args.device)
     writer = SummaryWriter()
     optimizer = torch.optim.Adam(model.parameters(), lr=CONFIG.LR, betas=(0.9, 0.999))
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size= 250, gamma=0.1)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size= 1000, gamma=0.1)
 
     model_path = args.model_path
     save_path = model_path + 'save/'
