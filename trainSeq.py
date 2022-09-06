@@ -94,8 +94,8 @@ def main(args):
     print("USE_CRF: {}".format(CONFIG.USE_CRF))
     print("================================")
     ########### LOAD DATA ############
-    train_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/cache/train.pkl".format(args.dataset)
-    test_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/cache/test.pkl".format(args.dataset)
+    train_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/train.pkl".format(args.dataset, args.estimator)
+    test_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/test.pkl".format(args.dataset, args.estimator)
     tag2idx_file = "/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json"
     train_dataset = IceSkatingDataset(pkl_file=train_file, 
                                     tag_mapping_file=tag2idx_file, 
@@ -110,12 +110,19 @@ def main(args):
     trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
     testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=False, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
-    if args.subtract_feature:
-        d_model = 42
-        nhead = 3
-    else: 
-        d_model = 34
+    if args.estimator == "alphapose":
+        if args.subtract_feature:
+            d_model = 42
+            nhead = 3
+        else: 
+            d_model = 34
+            nhead = 2
+    else:
         nhead = 2
+        if args.subtract_feature:
+            d_model = 38
+        else:
+            d_model = 32
     model = TransformerModel(
                     d_model = d_model,
                     nhead = nhead, 
@@ -128,9 +135,10 @@ def main(args):
             ).to(args.device)
     writer = SummaryWriter()
     optimizer = torch.optim.Adam(model.parameters(), lr=CONFIG.LR, betas=(0.9, 0.999))
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size= 1000, gamma=0.1)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size= 250, gamma=0.1)
 
     model_path = args.model_path
+    model_path = f"./experiments/{args.dataset}_{args.estimator}_{d_model}/"
     save_path = model_path + 'save/'
     if not os.path.exists(save_path):
         os.makedirs(save_path)
