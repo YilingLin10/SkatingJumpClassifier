@@ -12,8 +12,9 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from torch.autograd import Variable
 
-from model.crf_model import TransformerModel
-from model.linear_model import *
+from model.transformer_model import TransformerModel
+from model.agcn_transformer import AGCN_Transformer
+from model.stgcn_transformer import STGCN_Transformer
 from data.new_dataset import IceSkatingDataset
 from utils import eval_seq, eval_crf
 from config import CONFIG
@@ -48,6 +49,18 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--num_layers", type=int, default=CONFIG.NUM_ENCODER_LAYERS, help='number of encoder layers'
     )
+    parser.add_argument(
+        "--agcn", action="store_true", help="whether or not to use the agcn model"
+    )
+    parser.add_argument(
+        "--stgcn", action="store_true", help="whether or not to use the stgcn model"
+    )
+    parser.add_argument(
+        "--out_channel", type=int, default=CONFIG.OUT_CHANNEL, help="output channel of agcn or stgcn"
+    )
+    parser.add_argument(
+        "--hidden_channel", type=int, default=CONFIG.HIDDEN_CHANNEL, help="output channel of agcn or stgcn"
+    )
     args = parser.parse_args()
     return args
 
@@ -66,8 +79,16 @@ def main(args):
     print("================================")
     print("Dataset: {}".format(args.dataset))
     print("Estimator: {}".format(args.estimator))
-    print("Subtraction_features: {}".format(args.subtract_feature))
-    print("USE_CRF: {}".format(CONFIG.USE_CRF))
+    if (args.subtract_feature):
+        print("Subtraction features are used")
+    if CONFIG.USE_CRF:
+        print("CRF layer is used.")
+    if args.agcn:
+        print("Model: AGCN_Transformer")
+    elif args.stgcn:
+        print("Model: STGCN_Transformer")
+    else:
+        print("Model: Transformer")
     print("================================")
     ########### LOAD DATA ############
     test_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/{}.pkl".format(args.dataset, args.estimator, args.split)
@@ -79,29 +100,60 @@ def main(args):
                                     subtract_feature=args.subtract_feature)
     testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=False, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
-    if args.estimator == "alphapose":
-        if args.subtract_feature:
-            d_model = 42
-            nhead = 3
-        else: 
-            d_model = 34
-            nhead = 2
-    else:
-        nhead = 2
-        if args.subtract_feature:
-            d_model = 38
+    if args.agcn:
+        args.estimator = "alphapose"
+        args.subtract_feature = False
+        nhead = 4
+        model = AGCN_Transformer(
+                    hidden_channel = CONFIG.HIDDEN_CHANNEL,
+                    out_channel = CONFIG.OUT_CHANNEL,
+                    nhead = nhead, 
+                    num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
+                    dim_feedforward = CONFIG.DIM_FEEDFORWARD,
+                    dropout = 0.1,
+                    batch_first = True,
+                    num_class = CONFIG.NUM_CLASS,
+                    use_crf = CONFIG.USE_CRF
+                ).to(args.device)
+    elif args.stgcn:
+        args.estimator = "alphapose"
+        args.subtract_feature = False
+        nhead = 4
+        model = STGCN_Transformer(
+                    hidden_channel = CONFIG.HIDDEN_CHANNEL,
+                    out_channel = CONFIG.OUT_CHANNEL,
+                    nhead = nhead, 
+                    num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
+                    dim_feedforward = CONFIG.DIM_FEEDFORWARD,
+                    dropout = 0.1,
+                    batch_first = True,
+                    num_class = CONFIG.NUM_CLASS,
+                    use_crf = CONFIG.USE_CRF
+                ).to(args.device)
+    else:    
+        if args.estimator == "alphapose":
+            if args.subtract_feature:
+                d_model = 42
+                nhead = 3
+            else: 
+                d_model = 34
+                nhead = 2
         else:
-            d_model = 32
-    model = TransformerModel(
-                d_model = d_model,
-                nhead = nhead, 
-                num_encoder_layers = args.num_layers,
-                dim_feedforward = CONFIG.DIM_FEEDFORWARD,
-                dropout = 0.1,
-                batch_first = True,
-                num_class = CONFIG.NUM_CLASS,
-                use_crf = CONFIG.USE_CRF
-            ).to(args.device)
+            nhead = 2
+            if args.subtract_feature:
+                d_model = 38
+            else:
+                d_model = 32
+        model = TransformerModel(
+                        d_model = d_model,
+                        nhead = nhead, 
+                        num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
+                        dim_feedforward = CONFIG.DIM_FEEDFORWARD,
+                        dropout = 0.1,
+                        batch_first = True,
+                        num_class = CONFIG.NUM_CLASS,
+                        use_crf = CONFIG.USE_CRF
+                ).to(args.device)
     model.eval()
     ckpt_path = args.model_path + "save/transformer_bin_class.pth"
     ckpt = torch.load(ckpt_path)

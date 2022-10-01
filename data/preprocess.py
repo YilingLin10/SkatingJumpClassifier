@@ -14,6 +14,7 @@ import pickle
 
 flags.DEFINE_string('action', None, 'axel, flip, loop, lutz, old, salchow, toe')
 flags.DEFINE_string('estimator', 'alphapose', 'alphapose or posetriplet or normalized')
+flags.DEFINE_string('reverse', 'false', 'whether to include features with reversed sequence order')
 FLAGS = flags.FLAGS
 
 tag_mapping_file = "/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json"
@@ -25,8 +26,30 @@ def writePickle(pickle_file, samples):
     with open(pickle_file, "wb") as f:
         pickle.dump(samples, f)
 
+def reverse_feature(keypoints_list):
+    # keypoints_list: [len, feature_size]
+    reversed_list = []
+    for i in range(len(keypoints_list), 0, -1):
+        reversed_list.append(keypoints_list[i-1])
+    return reversed_list
+
+def reverse_output(keypoints_list):
+    # keypoints_list: [len, feature_size]
+    reversed_list = []
+    for i in range(len(keypoints_list), 0, -1):
+        reversed_list.append(keypoints_list[i-1])
+    for i, tag in enumerate(reversed_list):
+        if tag == 3:
+            reversed_list[i] = 1
+        elif tag == 1:
+            reversed_list[i] = 3
+    return reversed_list
+
 def load_data(json_file, split):
-    output_file = os.path.join(os.path.dirname(json_file), '{}.pkl'.format(split))
+    if FLAGS.reverse == 'true':
+        output_file = os.path.join(os.path.dirname(json_file), '{}_reverse.pkl'.format(split))
+    else:
+        output_file = os.path.join(os.path.dirname(json_file), '{}.pkl'.format(split))
     root_dir = os.path.join(os.path.dirname(json_file), split)
     video_data_list = []
     with open(json_file, 'r') as f:
@@ -105,6 +128,16 @@ def load_data(json_file, split):
             features_list = keypoints_list
             sample = {"subtraction_features": subtraction_features_list, "features": features_list, "video_name": video_name, "output": tags}
         samples_list.append(sample)
+        if FLAGS.reverse == 'true':
+            reversed_sample = {
+                "subtraction_features": reverse_feature(sample['subtraction_features']),
+                "features": reverse_feature(sample['features']),
+                "video_name": f"{sample['video_name']}_reverse",
+                "output": np.array(reverse_output(sample['output']))
+            }
+            assert np.array_equal(sample['features'][0], reversed_sample['features'][-1])
+            samples_list.append(reversed_sample)
+    print(len(samples_list))
     writePickle(output_file, samples_list)
 
 def main(_argv):
