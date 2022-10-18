@@ -97,4 +97,70 @@ def eval_crf(model, dataset, mode):
     print("MSE: {:.2f}".format(mse))
     print("================= END OF EVALUATION ================")
     return {"accuracy": token_acc.detach().item(),"mse": mse.detach().item(),"ids": output_ids, "predictions": output_preds, "labels": output_labels}
-    
+
+def nll_loss(predict, y):
+    PAD_IDX = 6
+    # convert y from (batch_size, max_len) to (batch_size * max_len)
+    y = y.contiguous().view(-1)
+    if_padded = (y < PAD_IDX).float()
+    total_token = int(torch.sum(if_padded).item())
+    # predict: (batch_size * max_len, num_class)
+    predict = predict[range(predict.size(0)), y]* if_padded
+    ce = -torch.sum(predict) / total_token
+    return ce
+
+def eval_seq2seq(model, dataset, mode):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    token_acc_list =[]
+    preds_list, labels_list = [], []
+    output_ids, output_preds, output_labels = [], [], []
+    loss_list = []
+    for it, batch in enumerate(dataset):
+        with torch.no_grad():
+            batch_size = batch['keypoints'].size(0)
+            
+            #---
+            keypoints, labels, labels_embeddings = batch['keypoints'].to(device), batch['output'].to(device), batch['tgt_embeddings'].to(device)
+            
+            labels_input = labels[:, :-1]
+            # labels_embeddings_input = labels_embeddings[:, :-1, :]
+            labels_expected = labels[:, 1:]
+            
+            # create masks
+            src_padding_mask = batch['mask'].to(device)
+            tgt_mask, tgt_padding_mask = model.create_mask(labels_input)
+            tgt_mask, tgt_padding_mask = tgt_mask.to(device), tgt_padding_mask.to(device)
+             
+            # generate output
+            output = model(keypoints, labels_input, tgt_mask, src_padding_mask, tgt_padding_mask)
+
+            #calculate loss
+            loss = nll_loss(output, labels_expected)
+            loss_list.append(loss.detach().item())
+            #---
+
+            output_ids.extend(batch['ids'])
+            _, labels_expected_padding_mask = model.create_mask(labels_expected)         
+            for labels, m in zip(labels_expected, labels_expected_padding_mask):
+                labels_list += (labels[m==False].tolist())
+                output_labels.append(labels[m==False].tolist())
+            
+            batch_preds = torch.argmax(output,dim=1)
+            ## reshape: (batch * seq_len) ---> (batch, seq_len)
+            batch_preds = batch_preds.view(batch_size, -1)
+
+            for preds, m in zip(batch_preds, labels_expected_padding_mask):
+                preds_list += (preds[m==False].tolist())
+                output_preds.append(preds[m==False].tolist())
+
+    preds_list_tensor = torch.tensor(preds_list, dtype=float)
+    labels_list_tensor = torch.tensor(labels_list, dtype=float)
+    token_acc = (preds_list_tensor == labels_list_tensor).sum()/len(preds_list_tensor)
+    print("************")
+    print(output_labels[0])
+    print(output_preds[0])
+    print("************")
+    print("TOKEN ACCURACY: {:.1%}".format(token_acc))
+    print("Loss: {:.4f}".format(sum(loss_list)/len(loss_list)))
+    print("================= END OF EVALUATION ================")
+    return {"accuracy": token_acc.detach().item(), "ids": output_ids, "predictions": output_preds, "labels": output_labels}
