@@ -1,8 +1,24 @@
 # SkatingJumpClassifier
 
-## Data 
-1. Download the data using this [link](https://drive.google.com/drive/folders/17sf3yamwGjCbKxLtr1m-xYmr_kEsArRd)
-2. Decompress the zip file and move it into the data folder
+## Data Preprocessing
+### generate PoseTransformer embeddings for each video
+```
+cd preprocess
+python project_encoder.py --action ${action}
+```
+### generate Pr-VIPE embeddings for each video
+```
+cd /home/lin10/projects/poem
+conda activate poem
+bash alphapose2embs.sh
+```
+### Data augmentation & Generate .pkl files
+```
+cd preprocess
+bash prepare_dataset.sh
+```
 
-## Training
-Run train.py or trainML.py
+## Training && Evaluation
+```
+bash run_experiment.sh
+```

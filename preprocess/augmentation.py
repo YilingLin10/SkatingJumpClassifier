@@ -11,21 +11,22 @@ from absl import flags
 from absl import app
 
 flags.DEFINE_string('action', None, 'all_jump, axel, flip, loop, lutz, old, salchow, toe')
-flags.DEFINE_string('estimator', 'alphapose', 'alphapose or posetriplet')
 FLAGS = flags.FLAGS
-
-########################################################################
-## For each video, create subvideos with various lengths and start_frame
-## {
-##    "id": "a01-0",  // The id of the created subvideos
-##    "video_name": "a01",  // The original video name
-##    "start_frame": 0,   // The start frame annotated in the original video
-##    "end_frame": 20,    // The end frame annotated in the original video
-##    "start_jump": 5,
-##    "end_jump": 15
-## }
-########################################################################
+num_steps = 10
+"""
+    For each video, create subvideos with various lengths and start_frame
+    {
+       "id": "a01-0",  // The id of the augmented data point
+       "video_name": "a01",  // The original video name
+       "start_frame": 0,   // The start frame annotated in the original video
+       "end_frame": 20,    // The end frame annotated in the original video
+       "start_jump": 5,
+       "end_jump": 15
+    }
+"""
 def writeJsonl(output_file, data):
+    if not os.path.exists(os.path.dirname(output_file)):
+        os.makedirs(os.path.dirname(output_file))
     with open(output_file, "w") as f:
         for d in data:
             json.dump(d, f)
@@ -39,7 +40,11 @@ def augment_test(csv_file, root_dir):
 
     for video in videos:
         video_name = video
-        action = video_name.split('_')[0]
+        split_video_name = video_name.split('_')
+        if (len(split_video_name) == 3):
+            action = f"{split_video_name[0]}_{split_video_name[1]}"
+        else:
+            action = split_video_name[0]
         frames = list(Path(f'/home/lin10/projects/SkatingJumpClassifier/20220801/{action}/{video_name}').glob("*.jpg"))
         video_data = jump_frame.loc[jump_frame['Video'] == video_name]
         if video_data.empty:
@@ -97,7 +102,11 @@ def augment_train(csv_file, root_dir):
     for video in videos:
         id = 0
         video_name = video
-        action = video_name.split('_')[0]
+        split_video_name = video_name.split('_')
+        if (len(split_video_name) == 3):
+            action = f"{split_video_name[0]}_{split_video_name[1]}"
+        else:
+            action = split_video_name[0]
         frames = list(Path(f'/home/lin10/projects/SkatingJumpClassifier/20220801/{action}/{video_name}').glob("*.jpg"))
         video_data = jump_frame.loc[jump_frame['Video'] == video_name]
         if video_data.empty:
@@ -127,9 +136,9 @@ def augment_train(csv_file, root_dir):
             #### REVISED Augmentation_3:
             #### 0 < possible start_frame <= (start_jump - 30)
             #### (end_jump + 30) <= possible end_frame < original end_frame
-            for i in range(1, start_jump - 30 + 1, 5):
+            for i in range(1, start_jump - 30 + 1, num_steps):
                 start_frame = 0 if i <= 0 else i
-                for j in range(end_jump + 30, last_frame, 5):
+                for j in range(end_jump + 30, last_frame, num_steps):
                     end_frame = last_frame if j >= last_frame else j
                     if start_frame == 0 and end_frame == last_frame:
                         continue
@@ -170,9 +179,9 @@ def augment_train(csv_file, root_dir):
             id += 1
 
             #### Only the first jump (end_frame cannot exceed start_jump_2)
-            for i in range(1, start_jump_1 - 30 + 1, 5):
+            for i in range(1, start_jump_1 - 30 + 1, num_steps):
                 start_frame = 0 if i < 0 else i
-                for j in range(end_jump_1 + 30, last_frame, 5):
+                for j in range(end_jump_1 + 30, last_frame, num_steps):
                     end_frame = -1 if (j >= start_jump_2) else j
                     if (start_frame == 0 or end_frame == -1):
                         continue
@@ -190,7 +199,7 @@ def augment_train(csv_file, root_dir):
                         data.append(d)
                         id += 1
             #### Only the second jump (start_frame cannot be less than end_jump_1)
-            for i in range(1, start_jump_2 - 30 + 1, 5):
+            for i in range(1, start_jump_2 - 30 + 1, num_steps):
                 start_frame = -1 if i < end_jump_1 else i
                 if end_jump_2 + 30 > last_frame:
                     end_frame = last_frame
@@ -210,7 +219,7 @@ def augment_train(csv_file, root_dir):
                         data.append(d)
                         id += 1
                 else:
-                    for j in range(end_jump_2 + 30, last_frame, 5):
+                    for j in range(end_jump_2 + 30, last_frame, num_steps):
                         end_frame = last_frame if (j >= last_frame) else j
                         if start_frame == -1 or end_frame == last_frame:
                             continue
@@ -229,9 +238,9 @@ def augment_train(csv_file, root_dir):
                             id += 1
 
             ### augmentations that contain 2 jumps
-            for i in range(1, start_jump_1 - 30 + 1, 5):
+            for i in range(1, start_jump_1 - 30 + 1, num_steps):
                 start_frame = 0 if (i <= 0) else i
-                for j in range(end_jump_2 + 30, last_frame, 5):
+                for j in range(end_jump_2 + 30, last_frame, num_steps):
                     end_frame = last_frame if (j >= last_frame) else j
                     if start_frame == 0 and end_frame == last_frame:
                         continue
@@ -248,18 +257,19 @@ def augment_train(csv_file, root_dir):
                         }
                         data.append(d)
                         id += 1
+        print(id)
     print("train, {}".format(len(data)))
     return data
 
 def main(_argv):
     csv_file='/home/lin10/projects/SkatingJumpClassifier/data/{}/info.csv'.format(FLAGS.action)
-    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}/{}'.format(FLAGS.action, FLAGS.estimator)
-    train_output_file = '/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/train_aug.jsonl'.format(FLAGS.action, FLAGS.estimator)
+    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}'.format(FLAGS.action)
+    train_output_file = '/home/lin10/projects/SkatingJumpClassifier/data/{}/train_aug.jsonl'.format(FLAGS.action)
     train_data_list = augment_train(csv_file, root_dir)
     writeJsonl(train_output_file, train_data_list)
 
-    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}/{}'.format(FLAGS.action, FLAGS.estimator)
-    test_output_file = '/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/test_aug.jsonl'.format(FLAGS.action, FLAGS.estimator)
+    root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}'.format(FLAGS.action)
+    test_output_file = '/home/lin10/projects/SkatingJumpClassifier/data/{}/test_aug.jsonl'.format(FLAGS.action)
     test_data_list = augment_test(csv_file, root_dir)
     writeJsonl(test_output_file, test_data_list)
     

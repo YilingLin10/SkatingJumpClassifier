@@ -10,21 +10,25 @@ import json
 
 class IceSkatingDataset(Dataset):
 
-    def __init__(self, pkl_file, tag_mapping_file, use_crf, add_noise, subtract_feature, transform=None):
+    def __init__(self, dataset, split, feature_type, model_type, use_crf, add_noise, transform=None):
         """
         Args:
-            csv_file (string): Path to the csv file with annotations.
-            root_dir (string): Directory with all the images.
+            dataset (str): name of the dataset
+            split (str): "train" or "test" split
+            feature_type (str): "raw_skeletons" or "embeddings"
+            use_crf (bool): if True, the inputs need to be sorted during collation
+            add_noise (bool): add noise to the features or not
             transform (callable, optional): Optional transform to be applied
                 on a sample.
         """
-        with open(pkl_file, 'rb') as f:
+        with open(os.path.join("/home/lin10/projects/SkatingJumpClassifier/data", dataset, feature_type, f'{split}.pkl'), 'rb') as f:
             self.video_data_list = pickle.load(f)
         self.transform = transform
         self.use_crf = use_crf
         self.add_noise = add_noise
-        self.subtract_feature = subtract_feature
-        self.tag_mapping = json.loads(Path(tag_mapping_file).read_text())
+        self.model_type = model_type
+        self.feature_type = feature_type
+        self.tag_mapping = json.loads(Path("/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json").read_text())
         self._idx2tag = {idx: tag for tag, idx in self.tag_mapping.items()}
     
     def __len__(self):
@@ -35,18 +39,18 @@ class IceSkatingDataset(Dataset):
             idx = idx.tolist()
         video_name = self.video_data_list[idx]['video_name']
         tags = self.video_data_list[idx]['output']
-        if self.subtract_feature:
-            features_list = self.video_data_list[idx]['subtraction_features']
-        else:
-            features_list = self.video_data_list[idx]['features']
-        sample = {"keypoints": features_list, "video_name": video_name, "output": tags}
+        features = self.video_data_list[idx]['features']
+        sample = {"keypoints": features, "video_name": video_name, "output": tags}
         return sample
     
     def collate_fn(self, samples):
         d_model = samples[0]['keypoints'][0].shape[0]
         if self.use_crf:
             samples.sort(key=lambda x: len(x['output']), reverse=True)
-            to_len = len(samples[0]['output'])
+            if self.model_type == "posetransformer-encoder-crf":
+                to_len = 300
+            else:
+                to_len = len(samples[0]['output'])
         else:
             to_len = max(len(sample['output']) for sample in samples)
         ids = []
@@ -78,18 +82,18 @@ class IceSkatingDataset(Dataset):
         return self._idx2tag[idx]
 
 if __name__ == '__main__':
-    dataset = IceSkatingDataset(pkl_file='/home/lin10/projects/SkatingJumpClassifier/data/all_jump/cache/test.pkl',
-                                tag_mapping_file='/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json',
+    dataset = IceSkatingDataset(dataset="all_jump",
+                                split="test",
+                                feature_type="embeddings",
                                 use_crf=True,
-                                add_noise=False,
-                                subtract_feature=True)
-
-    dataloader = DataLoader(dataset,batch_size=1,
+                                add_noise=False)
+    dataloader = DataLoader(dataset,batch_size=128,
                         shuffle=False, num_workers=1, collate_fn=dataset.collate_fn)
 
     for i_batch, sample_batched in enumerate(dataloader):
         # print(i_batch)
-        print(sample_batched['ids'][0])
-        print(sample_batched['output'][0])
-        # print(sample_batched['mask'])
-        print(sample_batched['keypoints'][0])
+        # print(sample_batched['ids'][0])
+        print(sample_batched['output'].shape)
+        print(sample_batched['mask'].shape)
+        print(sample_batched['keypoints'].shape)
+        break
