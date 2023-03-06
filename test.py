@@ -116,7 +116,7 @@ def main(args):
     eval_results_test = eval_crf(model, testloader, "test") if config["use_crf"] else eval_seq(model, testloader, "test")
     
     ####### Dump prediction #######
-    with open(os.path.join("/home/lin10/projects/SkatingJumpClassifier/experiments", args.model_path, f'{args.dataset}_{args.split}_pred.csv'), 'a') as f:
+    with open(os.path.join("/home/lin10/projects/SkatingJumpClassifier/experiments", args.model_path, f'{args.dataset}_{args.split}_pred.csv'), 'w') as f:
         csv_writer = csv.writer(f)
         for id, label, pred in zip(eval_results_test['ids'], eval_results_test['labels'], eval_results_test['predictions']):
             csv_writer.writerow([id, label, pred])

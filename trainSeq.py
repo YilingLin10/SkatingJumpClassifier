@@ -197,12 +197,12 @@ def main(args):
         
             ############### EVALUATION ##############
             if steps % config["eval_steps"] == 0:
-                # print("========= STEP-{} EVALUATING TRAINING DATA =========".format(steps))
-                # eval_results_train = eval_crf(model, trainloader, "train") if config["use_crf"] else eval_seq(model, trainloader, "train")
-                # writer.add_scalar('TRAIN/ACCURACY', eval_results_train['accuracy'], steps)
-                # writer.add_scalar('TRAIN/MACRO\\AVG\\RECALL', eval_results_train['macro_avg_recall'], steps)
-                # writer.add_scalar('TRAIN/MACRO\\AVG\\PRECISION', eval_results_train['macro_avg_precision'], steps)
-                # writer.add_scalar('TRAIN/MACRO\\AVG\\F1_SCORE', eval_results_train['macro_avg_f1'], steps)
+                print("========= STEP-{} EVALUATING TRAINING DATA =========".format(steps))
+                eval_results_train = eval_crf(model, trainloader, "train") if config["use_crf"] else eval_seq(model, trainloader, "train")
+                writer.add_scalar('TRAIN/ACCURACY', eval_results_train['accuracy'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\RECALL', eval_results_train['macro_avg_recall'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\PRECISION', eval_results_train['macro_avg_precision'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\F1_SCORE', eval_results_train['macro_avg_f1'], steps)
                 print("========= STEP-{} EVALUATING TESTING DATA =========".format(steps))
                 eval_results_test = eval_crf(model, testloader, "test") if config["use_crf"] else eval_seq(model, testloader, "test")
                 writer.add_scalar('EVAL/LOSS', eval_results_test['loss'], steps)
@@ -213,12 +213,12 @@ def main(args):
                 
                 ####### Dump evaluation record #########
                 eval_record.append({"steps":steps, 
-                                    # "train": {
-                                    #     "accuracy":eval_results_train['accuracy'], 
-                                    #     "macro_avg_recall":eval_results_train['macro_avg_recall'],
-                                    #     "macro_avg_precision":eval_results_train['macro_avg_precision'],
-                                    #     "macro_avg_f1":eval_results_train['macro_avg_f1']
-                                    #     },
+                                    "train": {
+                                        "accuracy":eval_results_train['accuracy'], 
+                                        "macro_avg_recall":eval_results_train['macro_avg_recall'],
+                                        "macro_avg_precision":eval_results_train['macro_avg_precision'],
+                                        "macro_avg_f1":eval_results_train['macro_avg_f1']
+                                        },
                                     "test": {
                                         "loss": eval_results_test["loss"],
                                         "accuracy":eval_results_test['accuracy'], 

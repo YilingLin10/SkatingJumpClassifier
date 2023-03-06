@@ -9,30 +9,32 @@ import cv2
 import json
 from absl import app
 from absl import flags
+from natsort import natsorted 
 
 # Specify GPUs
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "4, 5, 6"
 
-flags.DEFINE_string('action', 'loop', 'action_name')
+flags.DEFINE_string('action', 'all_jump, Axel, Loop, Flip, Lutz', 'action_name')
 flags.DEFINE_string('video_name', 'Loop_187', 'name of the video to test')
 flags.DEFINE_string('estimator', 'alphapose', 'name of the estimator')
 FLAGS = flags.FLAGS
 
-model_list = ['loop_alphapose_42', 'loop_alphapose_34']
+model_list = ['prvipe_0305/all_jump', 'prvipe_0305/Axel', 'prvipe_0305/Loop',
+              'prvipe_0305/Flip', 'prvipe_0305/Lutz']
 
 # 1. get_prediction
 # 2. visualize
 
 def get_answer(model_name, video_name):
-    path_to_prediction = f'./experiments/{model_name}/{FLAGS.action}_test_pred.csv'
+    path_to_prediction = os.path.join("./experiments", model_name, f"{FLAGS.action}_test_pred.csv")
     predictions = pd.read_csv(path_to_prediction, header=None, usecols=[0, 1, 2], names=['video_name', 'answer', 'prediction'])
     video_prediction = predictions.loc[predictions['video_name'] == video_name]
     answer = json.loads(video_prediction['answer'].item())
     return answer
 
 def get_prediction(model_name, video_name):
-    path_to_prediction = f'./experiments/{model_name}/{FLAGS.action}_test_pred.csv'
+    path_to_prediction = os.path.join("./experiments", model_name, f"{FLAGS.action}_test_pred.csv")
     predictions = pd.read_csv(path_to_prediction, header=None, usecols=[0, 1, 2], names=['video_name', 'answer', 'prediction'])
     video_prediction = predictions.loc[predictions['video_name'] == video_name]
     prediction = json.loads(video_prediction['prediction'].item())
@@ -40,18 +42,14 @@ def get_prediction(model_name, video_name):
 
 def get_frames(video_name):
     root_dir = "/home/lin10/projects/SkatingJumpClassifier/20220801"
-    action_name = video_name.split('_')[0]
-    video_dir = f"{root_dir}/{action_name}/{video_name}"
+    split_video_name = video_name.split('_')
+    if (len(split_video_name) == 3):
+        action = f"{split_video_name[0]}_{split_video_name[1]}"
+    else:
+        action = split_video_name[0]
+    video_dir = os.path.join(root_dir, action, video_name)
     files = os.listdir(video_dir)
-    imgs = [f for f in files if '.jpg' in f]
-    for img in imgs:
-        new_name = '{0:04d}'.format(int(img.rstrip('.jpg')))+'.jpg'
-        old = os.path.join(video_dir, img)
-        new = os.path.join(video_dir, new_name)
-        os.rename(old, new)
-
-    # Preprocessing raw frames
-    framefiles = sorted(glob.glob(os.path.join(video_dir, '*.jpg')))
+    framefiles = natsorted(glob.glob(os.path.join(video_dir, '*.jpg')))
     frames_raw = []
     for framefile in framefiles:
         frame_raw = cv2.imread(framefile)
@@ -66,9 +64,9 @@ def gray_scale(image):
 
 def gen_result(raw_frames, answer, prediction_list):
     frames = raw_frames.copy()
-    # now_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    # OUTPUT_PATH = './result/vis_{}_{}.mp4'.format(FLAGS.video_name, now_time)
-    OUTPUT_PATH = './result/vis_{}.mp4'.format(FLAGS.video_name)
+    now_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    OUTPUT_PATH = './result/vis_{}_{}.mp4'.format(FLAGS.video_name, now_time)
+    # OUTPUT_PATH = './result/vis_{}.mp4'.format(FLAGS.video_name)
     
     label_list = prediction_list
     label_list.insert(0, answer)
@@ -129,7 +127,7 @@ def gen_result(raw_frames, answer, prediction_list):
         fig,
         update,
         frames=np.arange(len(raw_frames)),
-        interval=100,
+        interval=200,
         blit=False)
     anim.save(OUTPUT_PATH, dpi=40)
 
