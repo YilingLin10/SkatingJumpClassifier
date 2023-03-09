@@ -31,7 +31,7 @@ flags.DEFINE_string('action', None, 'axel, flip, loop, lutz, old, salchow, toe')
 FLAGS = flags.FLAGS
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "4, 5, 6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "5, 6"
 
 checkpoint_path = "/home/r10944006/github/sport_tech_project/ckeckpoints/checkpoint_2/weight_epoch:0.pt"
 batch_size = 1
@@ -291,9 +291,46 @@ def get_video_hw(action, video):
     height, width, _ = img.shape
     return height, width
 
+# def main(_argv):
+#     for split in ["test", "train"]:
+#         root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}'.format(FLAGS.action)
+#         with open(f'{root_dir}/{split}_list.txt') as f:
+#             videos = f.read().splitlines()
+#         for video in tqdm(videos):
+#             split_video_name = video.split('_')
+#             if (len(split_video_name) == 3):
+#                 action = f"{split_video_name[0]}_{split_video_name[1]}"
+#             else:
+#                 action = split_video_name[0]
+            
+#             alphaposeResults = get_main_skeleton(os.path.join("/home/lin10/projects/SkatingJumpClassifier/20220801/", action, video, "alphapose-results.json"))
+#             keypoints_list = [np.delete(alphaposeResult[1], 2, axis=1) for alphaposeResult in alphaposeResults]
+#             valid_len = len(keypoints_list)
+            
+#             ############## convert list of float64 np.array to a single float32 np.array ##############
+#             keypoints_array = np.stack(keypoints_list)
+            
+#             ############## normalize joint coordinates to [-1, 1] #############
+#             # get height, width of video
+#             height, width = get_video_hw(action, video)
+#             normalized_keypoints = normalize_keypoints(keypoints_array[..., :2], width, height).astype(np.float32)
+            
+#             ############## pad (T, 17, 2) to (300, 17, 2) then unsqueeze to (1, 300, 17, 2) ##############
+#             normalized_keypoints = pad(normalized_keypoints, (300, 17, 2))
+#             normalized_keypoints = np.expand_dims(normalized_keypoints, axis=0)
+            
+#             ##### Run inferece function on normalized_keypoints, get embeddings of size (300, 544)
+#             embeddings = inference(normalized_keypoints)
+#             ##### unpad output as (T, 544)
+#             embeddings = embeddings[:valid_len].detach().cpu().numpy()
+#             ##### save output
+#             emb_file = os.path.join(f'/home/lin10/projects/SkatingJumpClassifier/20220801/{action}', video, "skeleton_embedding.pkl")
+#             with open(emb_file, "wb") as f:
+#                 pickle.dump(embeddings, f)
+
 def main(_argv):
-    for split in ["test", "train"]:
-        root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}/alphapose'.format(FLAGS.action)
+    for split in ["test"]:
+        root_dir='/home/lin10/projects/SkatingJumpClassifier/data/{}'.format(FLAGS.action)
         with open(f'{root_dir}/{split}_list.txt') as f:
             videos = f.read().splitlines()
         for video in tqdm(videos):
@@ -308,7 +345,8 @@ def main(_argv):
             valid_len = len(keypoints_list)
             
             ############## convert list of float64 np.array to a single float32 np.array ##############
-            keypoints_array = np.stack(keypoints_list)
+            keypoints_array = np.stack(keypoints_list).astype(np.float32)
+            print(keypoints_array[0])
             
             ############## normalize joint coordinates to [-1, 1] #############
             # get height, width of video
@@ -316,18 +354,24 @@ def main(_argv):
             normalized_keypoints = normalize_keypoints(keypoints_array[..., :2], width, height).astype(np.float32)
             
             ############## pad (T, 17, 2) to (300, 17, 2) then unsqueeze to (1, 300, 17, 2) ##############
+            padded_keypoints = pad(keypoints_array, (300, 17, 2))
+            padded_keypoints = np.expand_dims(padded_keypoints, axis=0)
             normalized_keypoints = pad(normalized_keypoints, (300, 17, 2))
             normalized_keypoints = np.expand_dims(normalized_keypoints, axis=0)
-            
-            ##### Run inferece function on normalized_keypoints, get embeddings of size (300, 544)
-            embeddings = inference(normalized_keypoints)
+            ##### Run inferece function on padded_keypoints, get embeddings of size (300, 544)
+            embeddings = inference(padded_keypoints)
+            normalized_embs = inference(normalized_keypoints)
+            print(embeddings[0])
+            print(embeddings[10])
+            print(normalized_embs[0])
+            print(normalized_embs[10])
             ##### unpad output as (T, 544)
-            embeddings = embeddings[:valid_len].detach().cpu().numpy()
+            # embeddings = embeddings[:valid_len].detach().cpu().numpy()
             ##### save output
-            emb_file = os.path.join(f'/home/lin10/projects/SkatingJumpClassifier/20220801/{action}', video, "skeleton_embedding.pkl")
-            with open(emb_file, "wb") as f:
-                pickle.dump(embeddings, f)
-
+            # emb_file = os.path.join(f'/home/lin10/projects/SkatingJumpClassifier/20220801/{action}', video, "pt_embedding.pkl")
+            # with open(emb_file, "wb") as f:
+            #     pickle.dump(embeddings, f)
+            break
 """
     single video usage: Please set action and video.
 """
