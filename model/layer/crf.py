@@ -41,9 +41,9 @@ class CRF(nn.Module):
         super().__init__()
         self.num_tags = num_tags
         self.batch_first = batch_first
-        self.start_transitions = nn.Parameter(torch.empty(num_tags))
-        self.end_transitions = nn.Parameter(torch.empty(num_tags))
-        self.transitions = nn.Parameter(torch.empty(num_tags, num_tags))
+        self.start_transitions = nn.Parameter(torch.randn(num_tags),requires_grad=True)
+        self.end_transitions = nn.Parameter(torch.randn(num_tags),requires_grad=True)
+        self.transitions = nn.Parameter(torch.randn(num_tags, num_tags),requires_grad=True)
 
         self.reset_parameters()
 
@@ -53,9 +53,15 @@ class CRF(nn.Module):
         The parameters will be initialized randomly from a uniform distribution
         between -0.1 and 0.1.
         """
-        nn.init.uniform_(self.start_transitions, -0.1, 0.1)
-        nn.init.uniform_(self.end_transitions, -0.1, 0.1)
-        nn.init.uniform_(self.transitions, -0.1, 0.1)
+        # nn.init.uniform_(self.start_transitions, -0.1, 0.1)
+        # nn.init.uniform_(self.end_transitions, -0.1, 0.1)
+        # nn.init.uniform_(self.transitions, -0.1, 0.1)
+        self.transitions.data[0, 2] = -10000
+        self.transitions.data[0, 3] = -10000
+        self.transitions.data[1, 3] = -10000
+        self.transitions.data[2, 0] = -10000
+        print(self.transitions)
+        
 
 
     def __repr__(self) -> str:

@@ -1,9 +1,10 @@
 import pandas as pd
 import json
+import os
 from absl import app
 from absl import flags
 
-flags.DEFINE_string('model_name', 'loop_alphapose_42', 'path to model')
+flags.DEFINE_string('model_path', 'loop_alphapose_42', 'path to model')
 flags.DEFINE_string('action', 'loop', 'the name of the testing dataset')
 FLAGS = flags.FLAGS
 
@@ -105,17 +106,20 @@ def get_mae(predictions, jump_frame):
     print(f"MAE: {error / len(predictions['video_name'])}")  
     return error / len(predictions['video_name'])
 
+def is_overlap(array1, array2):
+    return bool(set(array1) & set(array2))
+
 # 計算有與 answer 重疊的 prediction 之誤差百分比
 def get_err_percentage(predictions, jump_frame):
     include_missing_and_false = False
     error = 0.0
     num_valid_preds = 0
+    num_not_predicted_preds = 0
     for video_name, prediction in zip(predictions['video_name'], predictions['prediction']):
-        print(video_name)
+        # print(video_name)
         prediction = json.loads(prediction)
         video_data = jump_frame.loc[jump_frame['Video'] == video_name]
         two_frames = [i for i, p in enumerate(prediction) if p != 0]
-        # print(two_frames)
 
         while len(two_frames):
             start_frame = two_frames[0]
@@ -125,11 +129,11 @@ def get_err_percentage(predictions, jump_frame):
                     end_frame = frame
                     length = end_frame - start_frame + 1
                     if check_valid(video_data, start_frame, end_frame):
-                        print([*range(start_frame, end_frame + 1)])
-                        # locate the corresponding answer
+                        # print([*range(start_frame, end_frame + 1)])
+                        ######### locate the corresponding answer ########
                         correct_length = get_correspond_ans(video_data, start_frame, end_frame)
-                        print(f"correct_length: {correct_length}")
-                        print(f"error: {abs(length - correct_length)}")
+                        # print(f"correct_length: {correct_length}")
+                        # print(f"error: {abs(length - correct_length)}")
                         error += (abs(length - correct_length)/correct_length)
                         num_valid_preds += 1
                     
@@ -143,20 +147,39 @@ def get_err_percentage(predictions, jump_frame):
                     end_frame = frame
                     length = end_frame - start_frame + 1
                     if check_valid(video_data, start_frame, end_frame):
-                        print([*range(start_frame, end_frame + 1)])
-                        # locate the corresponding answer
+                        # print([*range(start_frame, end_frame + 1)])
+                        ######## locate the corresponding answer ########
                         correct_length = get_correspond_ans(video_data, start_frame, end_frame)
-                        print(f"DEBUG{start_frame, end_frame, correct_length})")
+                        # print(f"DEBUG{start_frame, end_frame, correct_length})")
+                        # print(f"correct_length: {correct_length}")
+                        # print(f"error: {abs(length - correct_length)}")
                         error += abs((length - correct_length)/correct_length)
                         num_valid_preds += 1
                     
                     ## remove this part of list
                     two_frames = two_frames[i+1:]
-                    # print(two_frames)
                     i = 0
                     break
-
-    return num_valid_preds, error / num_valid_preds
+        
+        ### Not predicted first jump
+        two_frames = [i for i, p in enumerate(prediction) if p != 0]
+        end_jump_1 = int(video_data['end_jump_1'])
+        start_jump_1 = int(video_data['start_jump_1'])
+        first_jump = [i for i in range(start_jump_1+1, end_jump_1)]
+        if not (is_overlap(first_jump, two_frames)):
+            error += 1
+            num_not_predicted_preds += 1
+        ### Not predicted second jump
+        if (video_data['start_jump_2'].item() > 0):
+            end_jump_2 = int(video_data['end_jump_2'])
+            start_jump_2 = int(video_data['start_jump_2'])
+            second_jump = [i for i in range(start_jump_2+1, end_jump_2)]
+            if not is_overlap(second_jump, two_frames):
+                error += 1
+                num_not_predicted_preds += 1
+        
+    print(num_not_predicted_preds)
+    return num_valid_preds, error / (num_valid_preds + num_not_predicted_preds)
 
 def get_custom_error(predictions):
     def get_error(label, tag):
@@ -180,23 +203,22 @@ def get_custom_error(predictions):
         for label, tag in zip(answer, prediction):
             error += get_error(label, tag)
         total_error += error
-        print(f"CUSTOM ERROR of {video_name}: {error}")
+        # print(f"CUSTOM ERROR of {video_name}: {error}")
     return total_error/ len(predictions)
 
 
 
 def main(_argv):
     info_file = f"/home/lin10/projects/SkatingJumpClassifier/data/{FLAGS.action}/info.csv"
-    prediction_file = f"/home/lin10/projects/SkatingJumpClassifier/experiments/{FLAGS.model_name}/{FLAGS.action}_test_pred.csv"
+    prediction_file = os.path.join("/home/lin10/projects/SkatingJumpClassifier/experiments", FLAGS.model_path, f"{FLAGS.action}_test_pred.csv")
     predictions = pd.read_csv(prediction_file, header=None, usecols=[0, 1, 2], names=['video_name', 'answer', 'prediction'])
     jump_frame = pd.read_csv(info_file, na_values=["None"])
 
-    mean_error = get_custom_error(predictions)
+    # mean_error = get_custom_error(predictions)
     num_valid_preds, err_percentage = get_err_percentage(predictions, jump_frame)
     print("=====================================")
     print(f"# OF VALID PREDS: {num_valid_preds}")
     print(f"MEAN PERCENTAGE ERROR: {err_percentage}")
-    print(f"MEAN CUSTOM ERROR: {mean_error}")
 
 if __name__ == '__main__':
     try:

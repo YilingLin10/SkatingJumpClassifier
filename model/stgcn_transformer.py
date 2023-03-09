@@ -38,6 +38,7 @@ class PositionalEncoding(nn.Module):
 
 class STGCN_Transformer(nn.Module):
     def __init__(self,
+                 in_channel,
                  hidden_channel,
                  out_channel,
                  nhead, 
@@ -53,6 +54,7 @@ class STGCN_Transformer(nn.Module):
                  device=None, dtype=None):
         super(STGCN_Transformer, self).__init__()
         ## ST-GCN's GCN block
+        self.in_channel = in_channel
         self.out_channel = out_channel
         self.num_node = 17
         self.self_link = [(i, i) for i in range(self.num_node)]
@@ -70,9 +72,9 @@ class STGCN_Transformer(nn.Module):
         }
         self.graph = Graph(**graph_args)
         self.A = torch.from_numpy(self.graph.A.astype(np.float32))
-        self.gcn1 = ConvTemporalGraphical(in_channels=2, out_channels=hidden_channel, kernel_size=self.A.shape[0])
+        self.gcn1 = ConvTemporalGraphical(in_channels=in_channel, out_channels=hidden_channel, kernel_size=self.A.shape[0])
         self.gcn2 = ConvTemporalGraphical(in_channels=hidden_channel, out_channels=out_channel, kernel_size=self.A.shape[0])
-        self.data_bn = nn.BatchNorm1d(self.num_node * 2)
+        self.data_bn = nn.BatchNorm1d(self.num_node * in_channel)
         self.edge_importance = nn.Parameter(torch.ones(self.A.shape))
         ## Encoder
         factory_kwargs = {'device': device, 'dtype': dtype}
@@ -108,7 +110,7 @@ class STGCN_Transformer(nn.Module):
         N, T, _ = src.size()
         
         # input src = [batch_size, seq_len, 34] --> [batch_size, 2, seq_len, 17]
-        src = src.view(N, T, self.num_node, 2).permute(0, 3, 1, 2)
+        src = src.view(N, T, self.num_node, self.in_channel).permute(0, 3, 1, 2)
         src, A = self.gcn1(src, A * self.edge_importance)
         src, A = self.gcn2(src, A * self.edge_importance)
 

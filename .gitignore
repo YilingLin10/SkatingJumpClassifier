@@ -1,13 +1,36 @@
 data/old
 data/loop
 data/flip
-data/flip_n_loop
+data/axel
+data/salchow
+data/toe_loop
+data/lutz
+
+data/loop_com
+data/axel_com
+data/salchow_com
+data/flip_com
+data/lutz_com
+data/all_jump
+data/single_jump
+data/multiple_jump
+
+data/Axel 
+data/Flip 
+data/Loop 
+data/Lutz
+
 runs
 **/tools/*.png
 experiments
+configs
 20220801
 20220801_Jump_重新命名
 20220801 Jump_重新命名-20220801T040440Z-001.zip
+20221208.zip
+result
+keep_models
+keep_runs
 __pycache__/
 *.py[cod]
 

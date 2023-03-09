@@ -47,17 +47,21 @@ class EncoderCRFModel(nn.Module):
                  batch_first,
                  num_class,
                  use_crf,
+                 fc_before_encoders,
                  layer_norm_eps = 1e-5,
                  activation = 'relu',
                  norm_first = False,
                  device=None, dtype=None):
-        super(TransformerModel, self).__init__()
+        super(EncoderCRFModel, self).__init__()
         factory_kwargs = {'device': device, 'dtype': dtype}
-        self.d_model = d_model
-        self.pos_encoder = PositionalEncoding(d_model=d_model,
+        self.use_crf = use_crf
+        self.fc_before_encoders = fc_before_encoders
+        self.set_d_model(d_model, fc_before_encoders)
+        
+        self.pos_encoder = PositionalEncoding(d_model=self.d_model,
                                               dropout=dropout, 
                                               max_len=300)
-        encoder_layer = nn.TransformerEncoderLayer(d_model=d_model,
+        encoder_layer = nn.TransformerEncoderLayer(d_model=self.d_model,
                                                    nhead =nhead, 
                                                    dim_feedforward = dim_feedforward, 
                                                    dropout = dropout,
@@ -65,17 +69,27 @@ class EncoderCRFModel(nn.Module):
                                                    layer_norm_eps = layer_norm_eps, 
                                                    batch_first = batch_first, 
                                                    **factory_kwargs)
-        encoder_norm = nn.LayerNorm(normalized_shape=d_model, 
+        encoder_norm = nn.LayerNorm(normalized_shape=self.d_model, 
                                     eps=layer_norm_eps, 
                                     **factory_kwargs)
         self.encoder = nn.TransformerEncoder(encoder_layer, num_encoder_layers, encoder_norm)
-        self.out = nn.Linear(d_model, num_class)
-        self.use_crf = use_crf
+        self.out = nn.Linear(self.d_model, num_class)
         self.crf = CRF(num_tags=num_class, batch_first=batch_first)
-
+        
+    def set_d_model(self, d_model, fc_before_encoders):
+        if fc_before_encoders:
+            self.fc = nn.Linear(d_model, 256)
+            self.d_model = 256 
+        else:
+            self.d_model = d_model
+          
     def _get_encoder_feature(self, src, mask):
         ### True: not attend, False: attend
         self.src_key_padding_mask = ~mask
+        
+        if self.fc_before_encoders:
+            src = self.fc(src)
+            
         # [batch_size, seq_len, 51]
         src = self.pos_encoder(src)
 
@@ -110,7 +124,7 @@ if __name__ == '__main__':
     dataloader = DataLoader(dataset,batch_size=2,
                         shuffle=True, num_workers=1, collate_fn=dataset.collate_fn)
 
-    model = TransformerModel(
+    model = EncoderCRFModel(
                     d_model = CONFIG.D_MODEL,
                     nhead = CONFIG.NUM_HEADS, 
                     num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,

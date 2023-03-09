@@ -1,30 +1,31 @@
 from __future__ import division
 from __future__ import print_function
 
-import time
 from argparse import ArgumentParser, Namespace
 import numpy as np
-import datetime
+from datetime import datetime
 import torch
 import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from torch.autograd import Variable
-
-from model.transformer_model import TransformerModel
-from model.agcn_transformer import AGCN_Transformer
-from model.stgcn_transformer import STGCN_Transformer
-from data.new_dataset import IceSkatingDataset
-from utils import eval_seq, eval_crf
-from config import CONFIG
 from tqdm import trange, tqdm
 from typing import Dict
 import json
 import os
 import csv
+import yaml
+
+from model.encoder_crf import EncoderCRFModel
+from model.stgcn_transformer import STGCN_Transformer
+from model.poseTransformer_encoder_crf import PoseTransformerEncoderCRF
+from data.new_dataset import IceSkatingDataset
+from utils import eval_seq, eval_crf
+
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "4, 5, 6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+
 def parse_args() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=42, help='Random seed.')
@@ -32,31 +33,19 @@ def parse_args() -> Namespace:
         "--device", type=torch.device, help="cpu, cuda, cuda:0, cuda:1", default="cuda"
     )
     parser.add_argument(
-        "--dataset", type=str, default="loop", help="old, loop, flip, all_jum"
+        "--dataset", type=str, default="all_jump", help="old, loop, flip, all_jum"
     )
     parser.add_argument(
-        "--subtract_feature", action="store_true", help="whether or not to use subtracted features"
+        "--config_name", required=True, type=str, help="name of the config file"
     )
     parser.add_argument(
-        "--estimator", type=str, default="alphapose", help="alphapose or posetriplet"
+        "--model_name", required=True, type=str, help="path to saved model checkpoints"
     )
     parser.add_argument(
-        "--model_path", type=str, default='./experiments/model_1/', help="path to saved model checkpoints"
+        "--experiment_name", required=True, type=str, help="path to experiments"
     )
     parser.add_argument(
-        "--num_epochs", type=int, default=CONFIG.NUM_EPOCHS, help='number of epochs'
-    )
-    parser.add_argument(
-        "--agcn", action="store_true", help="whether or not to use the agcn model"
-    )
-    parser.add_argument(
-        "--stgcn", action="store_true", help="whether or not to use the stgcn model"
-    )
-    parser.add_argument(
-        "--out_channel", type=int, default=CONFIG.OUT_CHANNEL, help="output channel of agcn or stgcn"
-    )
-    parser.add_argument(
-        "--hidden_channel", type=int, default=CONFIG.HIDDEN_CHANNEL, help="output channel of agcn or stgcn"
+        "--num_epochs", type=int, default=100, help='number of epochs'
     )
     args = parser.parse_args()
     return args
@@ -64,6 +53,7 @@ def parse_args() -> Namespace:
 def nll_loss(predict, y):
     # convert y from (batch_size, max_len) to (batch_size * max_len)
     y = y.view(-1)
+    # print(predict)
     if_padded = (y > -1).float()
     total_token = int(torch.sum(if_padded).item())
     # predict: (batch_size * max_len, num_class)
@@ -72,9 +62,11 @@ def nll_loss(predict, y):
     return ce
 
 def mse_loss(outputs, labels, mask):
-    # outputs: [batch_size * max_len, d_model] (log_probabilities)
-    # labels: [batch_size, max_len]
-    # mask = [batch_size, max_len]
+    """
+        outputs: [batch_size * max_len, d_model] (log_probabilities)
+        labels: [batch_size, max_len]
+        mask = [batch_size, max_len]
+    """
     labels = labels.view(-1).float().clone().detach().requires_grad_(True)
     mask = mask.view(-1)
     predictions = torch.argmax(outputs, dim=1).float().clone().detach().requires_grad_(True)
@@ -92,105 +84,85 @@ def same_seed(seed):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+                
+def load_config(config_name):
+    CONFIG_PATH = "./configs"
+    with open(os.path.join(CONFIG_PATH, f"{config_name}.YAML")) as file:
+        config = yaml.safe_load(file)
+    return config
 
+def get_model(config):
+    if config["model_type"] == "encoder-crf":
+        return EncoderCRFModel(
+                    d_model = config["d_model"],
+                    nhead = config["nhead"], 
+                    num_encoder_layers = config["num_encoder_layers"],
+                    dim_feedforward = config["dim_feedforward"],
+                    dropout = 0.1,
+                    batch_first = True,
+                    num_class = config["num_class"],
+                    use_crf = config["use_crf"],
+                    fc_before_encoders = config["fc_before_encoders"]
+                )
+    elif config["model_type"] == "stgcn-encoder-crf":
+        return STGCN_Transformer(
+                    in_channel = config["in_channel"],
+                    hidden_channel = config["hidden_channel"],
+                    out_channel = config["out_channel"],
+                    nhead = config["nhead"], 
+                    num_encoder_layers = config["num_encoder_layers"],
+                    dim_feedforward = config["dim_feedforward"],
+                    dropout = 0.1,
+                    batch_first = True,
+                    num_class = config["num_class"],
+                    use_crf = config["use_crf"]
+                )
+    elif config["model_type"] == "posetransformer-encoder-crf":
+        return PoseTransformerEncoderCRF(
+                    d_model = config["d_model"],
+                    nhead = config["nhead"], 
+                    num_encoder_layers = config["num_encoder_layers"],
+                    dim_feedforward = config["dim_feedforward"],
+                    dropout = 0.1,
+                    batch_first = True,
+                    num_class = config["num_class"],
+                    use_crf = config["use_crf"],
+                    fc_before_encoders = config["fc_before_encoders"]
+                )
+    
 def main(args):
+    config = load_config(args.config_name)
     args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     same_seed(args.seed)
 
     print("================================")
     print("Dataset: {}".format(args.dataset))
-    print("Estimator: {}".format(args.estimator))
-    if (args.subtract_feature):
-        print("Subtraction features are used")
-    if CONFIG.USE_CRF:
-        print("CRF layer is used.")
-    if args.agcn:
-        print("Model: AGCN_Transformer")
-    elif args.stgcn:
-        print("Model: STGCN_Transformer")
-    else:
-        print("Model: Transformer")
-
+    print("Model type: {}".format(config["model_type"]))
+    print("feature type: {}".format(config["feature_type"]))
     print("================================")
     ########### LOAD DATA ############
-    train_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/train_reverse.pkl".format(args.dataset, args.estimator)
-    test_file = "/home/lin10/projects/SkatingJumpClassifier/data/{}/{}/test.pkl".format(args.dataset, args.estimator)
-    tag2idx_file = "/home/lin10/projects/SkatingJumpClassifier/data/tag2idx.json"
-    train_dataset = IceSkatingDataset(pkl_file=train_file, 
-                                    tag_mapping_file=tag2idx_file, 
-                                    use_crf=CONFIG.USE_CRF, 
-                                    add_noise=CONFIG.ADD_NOISE,
-                                    subtract_feature=args.subtract_feature)
-    test_dataset = IceSkatingDataset(pkl_file=test_file, 
-                                    tag_mapping_file=tag2idx_file, 
-                                    use_crf=CONFIG.USE_CRF, 
-                                    add_noise=CONFIG.ADD_NOISE,
-                                    subtract_feature=args.subtract_feature)
-    trainloader = DataLoader(train_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
-    testloader = DataLoader(test_dataset,batch_size=CONFIG.BATCH_SIZE, shuffle=False, num_workers=4, collate_fn=test_dataset.collate_fn)
+    train_dataset = IceSkatingDataset(dataset=args.dataset,
+                                split="train",
+                                feature_type=config["feature_type"],
+                                model_type=config["model_type"],
+                                use_crf=config["use_crf"],
+                                add_noise=config["add_noise"])
+    test_dataset = IceSkatingDataset(dataset=args.dataset,
+                                split="test",
+                                feature_type=config["feature_type"],
+                                model_type=config["model_type"],
+                                use_crf=config["use_crf"],
+                                add_noise=config["add_noise"])
+    trainloader = DataLoader(train_dataset,batch_size=config["batch_size"], shuffle=True, num_workers=4, collate_fn=train_dataset.collate_fn)
+    testloader = DataLoader(test_dataset,batch_size=config["batch_size"], shuffle=False, num_workers=4, collate_fn=test_dataset.collate_fn)
     ############ MODEL && OPTIMIZER && LOSS ############
-    if args.agcn:
-        model_path = f"./experiments/agcn/{args.dataset}_{args.hidden_channel}_{args.out_channel}_MAX/"
-        args.estimator = "alphapose"
-        args.subtract_feature = False
-        nhead = 4
-        model = AGCN_Transformer(
-                    hidden_channel = CONFIG.HIDDEN_CHANNEL,
-                    out_channel = CONFIG.OUT_CHANNEL,
-                    nhead = nhead, 
-                    num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
-                    dim_feedforward = CONFIG.DIM_FEEDFORWARD,
-                    dropout = 0.1,
-                    batch_first = True,
-                    num_class = CONFIG.NUM_CLASS,
-                    use_crf = CONFIG.USE_CRF
-                ).to(args.device)
-    elif args.stgcn:
-        model_path = f"./experiments/stgcn/{args.dataset}_{args.hidden_channel}_{args.out_channel}_MAX_reverse/"
-        args.estimator = "alphapose"
-        args.subtract_feature = False
-        nhead = 4
-        model = STGCN_Transformer(
-                    hidden_channel = CONFIG.HIDDEN_CHANNEL,
-                    out_channel = CONFIG.OUT_CHANNEL,
-                    nhead = nhead, 
-                    num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
-                    dim_feedforward = CONFIG.DIM_FEEDFORWARD,
-                    dropout = 0.1,
-                    batch_first = True,
-                    num_class = CONFIG.NUM_CLASS,
-                    use_crf = CONFIG.USE_CRF
-                ).to(args.device)
-    else:    
-        if args.estimator == "alphapose":
-            if args.subtract_feature:
-                d_model = 42
-                nhead = 3
-            else: 
-                d_model = 34
-                nhead = 2
-        else:
-            nhead = 2
-            if args.subtract_feature:
-                d_model = 38
-            else:
-                d_model = 32
-        model = TransformerModel(
-                        d_model = d_model,
-                        nhead = nhead, 
-                        num_encoder_layers = CONFIG.NUM_ENCODER_LAYERS,
-                        dim_feedforward = CONFIG.DIM_FEEDFORWARD,
-                        dropout = 0.1,
-                        batch_first = True,
-                        num_class = CONFIG.NUM_CLASS,
-                        use_crf = CONFIG.USE_CRF
-                ).to(args.device)
-        model_path = f"./experiments/transformer/{args.dataset}_{args.estimator}_{d_model}_reverse/"
-    writer = SummaryWriter()
-    optimizer = torch.optim.Adam(model.parameters(), lr=CONFIG.LR, betas=(0.9, 0.999))
+    model = get_model(config).to(args.device)
+    model_path = os.path.join(f"./experiments/{args.experiment_name}", args.model_name)
+    log_dir = os.path.join(f"./runs/{args.experiment_name}", args.model_name)
+    writer = SummaryWriter(log_dir=log_dir)
+    optimizer = torch.optim.Adam(model.parameters(), lr=config["lr"], betas=(0.9, 0.999))
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size= 250, gamma=0.1)
-
-    save_path = model_path + 'save/'
+    save_path = os.path.join(model_path, 'save')
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     ############ START ITERATION ##############
@@ -199,7 +171,7 @@ def main(args):
     eval_record = []
     steps = 0
     best_eval = 0
-    epochss = trange(args.num_epochs, desc="Epoch")
+    epochss = trange(max(args.num_epochs, config["num_epochs"]), desc="Epoch")
     for epochs in epochss:
         writer.add_scalar('TRAIN/LR', scheduler.optimizer.param_groups[0]['lr'], epochs)
         ################# TRAINING ##############
@@ -211,51 +183,69 @@ def main(args):
             output = model(keypoints, mask)
 
             #calculate loss
-            # loss = model.loss_fn(keypoints, labels, mask) if CONFIG.USE_CRF else nll_loss(output, labels)
-            loss = model.loss_fn(keypoints, labels, mask) if CONFIG.USE_CRF else mse_loss(output, labels, mask)
+            loss = model.loss_fn(keypoints, labels, mask) if config["use_crf"] else nll_loss(output, labels)
+            # loss = model.loss_fn(keypoints, labels, mask) if config["use_crf"] else mse_loss(output, labels, mask)
 
             #backprop
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             steps += 1
-            if steps % 100 == 0:
+            if steps % config["log_loss_steps"] == 0:
                 writer.add_scalar('TRAIN/LOSS', loss.detach().item(), steps)
                 print("STEP-{}\t | LOSS : {}\t".format(steps, loss.detach().item()))
         
             ############### EVALUATION ##############
-            if steps % CONFIG.EVAL_STEPS == 0:
+            if steps % config["eval_steps"] == 0:
                 print("========= STEP-{} EVALUATING TRAINING DATA =========".format(steps))
-                eval_results_train = eval_crf(model, trainloader, "train") if CONFIG.USE_CRF else eval_seq(model, trainloader, "train")
-                
-                print("========= STEP-{} EVALUATING TESTING DATA =========".format(steps))
-                eval_results_test = eval_crf(model, testloader, "test") if CONFIG.USE_CRF else eval_seq(model, testloader, "test")
+                eval_results_train = eval_crf(model, trainloader, "train") if config["use_crf"] else eval_seq(model, trainloader, "train")
                 writer.add_scalar('TRAIN/ACCURACY', eval_results_train['accuracy'], steps)
-                writer.add_scalar('TRAIN/MSE', eval_results_train['mse'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\RECALL', eval_results_train['macro_avg_recall'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\PRECISION', eval_results_train['macro_avg_precision'], steps)
+                writer.add_scalar('TRAIN/MACRO\\AVG\\F1_SCORE', eval_results_train['macro_avg_f1'], steps)
+                print("========= STEP-{} EVALUATING TESTING DATA =========".format(steps))
+                eval_results_test = eval_crf(model, testloader, "test") if config["use_crf"] else eval_seq(model, testloader, "test")
+                writer.add_scalar('EVAL/LOSS', eval_results_test['loss'], steps)
                 writer.add_scalar('EVAL/ACCURACY', eval_results_test['accuracy'], steps)
-                writer.add_scalar('EVAL/MSE', eval_results_test['mse'], steps)
-                eval_record.append({"steps":steps, "train":{"accuracy":eval_results_train['accuracy'], "mse":eval_results_train['mse']}, "test":{"accuracy":eval_results_test['accuracy'], "mse":eval_results_test['mse']}})
-
-                # Dump evaluation record
-                with open(model_path+'eval_record.json', 'w') as file:
+                writer.add_scalar('EVAL/MACRO\\AVG\\RECALL', eval_results_test['macro_avg_recall'], steps)
+                writer.add_scalar('EVAL/MACRO\\AVG\\PRECISION', eval_results_test['macro_avg_precision'], steps)
+                writer.add_scalar('EVAL/MACRO\\AVG\\F1_SCORE', eval_results_test['macro_avg_f1'], steps)
+                
+                ####### Dump evaluation record #########
+                eval_record.append({"steps":steps, 
+                                    "train": {
+                                        "accuracy":eval_results_train['accuracy'], 
+                                        "macro_avg_recall":eval_results_train['macro_avg_recall'],
+                                        "macro_avg_precision":eval_results_train['macro_avg_precision'],
+                                        "macro_avg_f1":eval_results_train['macro_avg_f1']
+                                        },
+                                    "test": {
+                                        "loss": eval_results_test["loss"],
+                                        "accuracy":eval_results_test['accuracy'], 
+                                        "macro_avg_recall":eval_results_test['macro_avg_recall'],
+                                        "macro_avg_precision":eval_results_test['macro_avg_precision'],
+                                        "macro_avg_f1":eval_results_test['macro_avg_f1']
+                                        }
+                                    })
+                with open(os.path.join(model_path,'eval_record.json'), 'w') as file:
                     json.dump(eval_record, file)
                 
-                # Dump prediction
-                with open(model_path+'prediction.csv', 'a') as f:
-                    csv_writer = csv.writer(f)
-                    for id, label, pred in zip(eval_results_test['ids'], eval_results_test['labels'], eval_results_test['predictions']):
-                        csv_writer.writerow([steps, id, label, pred])
-
-                ####### SAVE THE BEST MODEL #########
-                if eval_results_test["accuracy"] > best_eval:
-                    best_eval = eval_results_test["accuracy"]
-                    print("SAVING THE BEST MODEL - ACCURACY {:.1%}".format(best_eval))
+                ####### Dump prediction #########
+                # with open(os.path.join(model_path, 'eval_prediction.csv'), 'a') as f:
+                #     csv_writer = csv.writer(f)
+                #     for id, label, pred in zip(eval_results_test['ids'], eval_results_test['labels'], eval_results_test['predictions']):
+                #         csv_writer.writerow([steps, id, label, pred])
+                
+                select_model_metric = config["select_model_metric"]
+                if eval_results_test[select_model_metric] > best_eval:
+                    best_eval = eval_results_test[select_model_metric]
+                    print("SAVING THE BEST MODEL - {} {:.1%}".format(select_model_metric, best_eval))
                     checkpoint = {
                         'epochs': epochs + 1,
                         'steps': steps,
                         'state_dict': model.state_dict(),
                     }
-                    torch.save(checkpoint, save_path + "transformer_bin_class.pth")
+                    torch.save(checkpoint, os.path.join(save_path, "transformer_bin_class.pth"))
         scheduler.step()
 
 if __name__ == "__main__":
